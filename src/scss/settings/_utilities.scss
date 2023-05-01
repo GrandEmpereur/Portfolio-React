@@ -234,9 +234,12 @@
 @each $i, $spacing in $spacings {
     .u-pad-#{$i}{ padding: #{$spacing}; }
     .u-pad-t-#{$i}{ padding-top: #{$spacing}; }
-    .u-pad-r-#{$i}{ padding-right: #{$spacing}; }
     .u-pad-b-#{$i}{ padding-bottom: #{$spacing}; }
+    .u-pad-tb-#{$i}{ padding-top: #{$spacing}; padding-bottom: #{$spacing}; }
     .u-pad-l-#{$i}{ padding-left: #{$spacing}; }
+    .u-pad-r-#{$i}{ padding-right: #{$spacing}; }
+    .u-pad-lr-#{$i}{ padding-left: #{$spacing}; padding-right: #{$spacing}; }
+
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -246,9 +249,9 @@
 @each $i, $spacing in $spacings {
     .u-marg-#{$i}{ margin: #{$spacing}; }
     .u-marg-t-#{$i}{ margin-top: #{$spacing}; }
-    .u-marg-r-#{$i}{ margin-right: #{$spacing}; }
     .u-marg-b-#{$i}{ margin-bottom: #{$spacing}; }
     .u-marg-l-#{$i}{ margin-left: #{$spacing}; }
+    .u-marg-r-#{$i}{ margin-right: #{$spacing}; }
 }
 
 .u-marg-t-auto { margin-top: auto; }
@@ -259,20 +262,6 @@
 .u-marg-lr-auto {
     margin-left: auto;
     margin-right: auto;
-}
-
-// ---------------------------------------------------------------------------------------------------------------------
-// Accessibility
-// ---------------------------------------------------------------------------------------------------------------------
-
-.visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
 }
 
 // ---------------------------------------------------------------------------------------------------------------------
