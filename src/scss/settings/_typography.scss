@@ -141,7 +141,6 @@ h5,
 }
 
 .hero-subtitle.richtext {
-
     em,
     i {
         font-style: italic;
@@ -156,9 +155,4 @@ h5,
 
 strong {
     font-weight: 600;
-}
-
-h1.richtext:has(.metafield-rich_text_field),
-.h1.richtext:has(.metafield-rich_text_field) {
-    line-height: 3.3625rem;
 }
