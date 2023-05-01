@@ -1,0 +1,52 @@
+// Import fonts from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+:root {
+    // Fonts
+    --heading-font-family: 'Amaranth', sans-serif;
+    --body-font-family: 'Crimson Text', serif;
+
+    // Typography
+    --base-text-size: 0.875rem;
+    --text-size-increment: 1.2;
+    --base-text-line-height: 1.3125rem;
+
+    --text-xs: calc(var(--base-text-size) / var(--text-size-increment));
+    --text-s: var(--base-text-size);
+    --text-m: calc(var(--text-s) * var(--text-size-increment));
+    --text-l: calc(var(--text-m) * var(--text-size-increment));
+    --text-xl: calc(var(--text-l) * var(--text-size-increment));
+    --text-2xl: calc(var(--text-xl) * var(--text-size-increment));
+    --text-3xl: calc(var(--text-2xl) * var(--text-size-increment));
+    --text-4xl: calc(var(--text-3xl) * var(--text-size-increment));
+
+    --line-height-fixed-amount: 0.35rem;
+    --line-height-relative-amount: 1.1em;
+    --globalLineHeight: calc(var(--line-height-fixed-amount) + var(--line-height-relative-amount));
+
+    // Spacing
+    --unit: 0.5rem;
+    --space-increment: 1.65;
+
+    --space-xs: calc(var(--unit) / var(--space-increment));
+    --space-s: var(--unit);
+    --space-m: calc(var(--space-s) * var(--space-increment));
+    --space-l: calc(var(--space-m) * var(--space-increment));
+    --space-xl: calc(var(--space-l) * var(--space-increment));
+    --space-2xl: calc(var(--space-xl) * var(--space-increment));
+    --space-3xl: calc(var(--space-2xl) * var(--space-increment));
+    --space-4xl: calc(var(--space-3xl) * var(--space-increment));
+
+    // Colors
+    --color-gray-black: #1E1E1E;
+    --color-gray: #696969;
+    --color-white: #fff;
+    --color-black: #030302;
+    --color-gold: #DAB967;
+    --color-error: #E2918C;
+    --color-success: #88BEA2;
+
+    // Grid
+    --page-width: 90rem;
+}
