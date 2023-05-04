@@ -1,0 +1,96 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Include placeholders
+// @extend %placeholder-name;
+// ---------------------------------------------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Titles & Typography
+// ---------------------------------------------------------------------------------------------------------------------
+
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Icons
+// ---------------------------------------------------------------------------------------------------------------------
+
+%icon {
+    width: 22px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+%chevron {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transform-origin: center;
+    height: 11px;
+    width: 15px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='12' viewBox='0 0 15 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6785 2L6.67847 6L1.67847 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    transition: var(--global-transition);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Layout
+// ---------------------------------------------------------------------------------------------------------------------
+
+%page-width {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding-left: var(--grid-outside-gap-mobile);
+    padding-right: var(--grid-outside-gap-mobile);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Transition
+// ---------------------------------------------------------------------------------------------------------------------
+
+%transition {
+    transition: all var(--global-transition-speed) var(--global-ease);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Button
+// ---------------------------------------------------------------------------------------------------------------------
+
+%button {
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    text-decoration: none;
+    border: none;
+    appearance: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid transparent;
+    width: fit-content;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Badges
+// ---------------------------------------------------------------------------------------------------------------------
+
+%badge {
+    border: 1px solid var(--color-bright-gray);
+    padding: .585rem 1.3125rem;
+    border-radius: 100px;
+    text-decoration: none;
+    display: block;
+    transition: all var(--global-ease) var(--global-transition-speed);
+}
+
+%badge-hover {
+    transition: all var(--global-ease) var(--global-transition-speed);
+    border-color: var(--color-gray-black);
+    background-color: var(--color-gray-black);
+    color: var(--color-white);
+    font-weight: 400;
+}

@@ -1,0 +1,371 @@
+@import "../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Button base layouts (same for all buttons style)
+// ---------------------------------------------------------------------------------------------------------------------
+
+.button {
+  --button-height: 3.125rem;
+  --button-height-large: 4.125rem;
+  --button-height-mobile: 2.125rem;
+  --button-width: 7.5rem;
+
+  @extend %button;
+
+  font-size: 0.875rem; // 14px
+  border-radius: var(--button-border-radius);
+  transition: all 150ms ease-in;
+  border: 1px solid transparent;
+  max-height: var(--button-height);
+  min-width: var(--button-width);
+  padding: 1.1rem var(--space-xl) 1rem var(--space-xl);
+
+  &:focus {
+    outline: 0;
+  }
+
+  span, svg {
+    transition: color 150ms ease-in;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-left: 1.3125rem;
+    padding-right: 1.3125rem;
+  }
+
+  &.button--s {
+    --button-height: 2.1875rem;
+    --button-width: 5rem;
+    padding: 0.6rem var(--space-m) 0.54rem var(--space-m);
+  }
+
+  &.button--full-width {
+    width: 100%;
+  }
+
+  &.button--half-width {
+    width: 50%;
+    padding-left: initial;
+    padding-right: initial;
+    min-width: initial;
+  }
+
+  &.button--l {
+    padding: 1.15em 2.8rem 1.15em;
+
+    span {
+      font-size: var(--text-m);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Button styles
+// ---------------------------------------------------------------------------------------------------------------------
+.button.button--primary {
+  background: var(--color-gray-black);
+  color: var(--color-white);
+  text-transform: uppercase;
+
+  span {
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+
+  &.button--primary-border-hover:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      border: 1px solid var(--color-gray-black);
+    }
+  }
+
+  &.button--blur {
+    background: rgba(53, 52, 52, 0.5);
+    backdrop-filter: blur(7px);
+
+    &:hover {
+      @media (hover: hover) and (pointer: fine) {
+        background: rgba(255, 255, 255, 0.56);
+        backdrop-filter: blur(5px);
+        border: 1px solid var(--color-gray-black);
+        color: var(--color-gray-black);
+  
+        span {
+          color: var(--color-gray-black);
+        }
+      }
+    }
+  }
+
+  &.button--with-border {
+    border: 1px solid var(--color-gray-black);
+  }
+  
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      color: var(--color-gray-black);
+      background: var(--color-white);
+
+      span {
+        color: var(--color-gray-black);
+      }
+    }
+  }
+}
+
+.button.button--secondary {
+  border: 1px solid transparent;
+  color: var(--color-gray-black);
+  background: var(--color-white);
+  text-transform: uppercase;
+
+  span {
+    color: var(--color-gray-black);
+    text-transform: uppercase;
+  }
+
+  &.has-icon svg {
+    color: var(--color-gray-black);
+  }
+
+  &.button--blur {
+    background: rgba(255, 255, 255, 0.56);
+    backdrop-filter: blur(5px);
+
+    &:hover {
+      @media (hover: hover) and (pointer: fine) {
+        background: rgba(53, 52, 52, 0.5);
+        backdrop-filter: blur(5px);
+        border: 1px solid var(--color-gray-black);
+        color: var(--color-white);
+  
+        span {
+          color: var(--color-white);
+        }
+      }
+    }
+
+  }
+
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      background: var(--color-gray-black);
+      color: var(--color-white);
+
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+.button.button--tertiary {
+  border: 1px solid transparent;
+  color: var(--color-gray-black);
+  background: var(--color-bright-gray);
+
+  span {
+    color: var(--color-gray-black);
+  }
+
+  &.has-icon svg {
+    color: var(--color-gray-black);
+  }
+
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      background: var(--color-gray-black);
+      color: var(--color-white);
+
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+.button.button--alt {
+  border: 1px solid var(--color-gray-black);
+  color: var(--color-gray-black);
+  background: transparent;
+
+  &.button--alt-grey {
+    border-color: var(--color-philippine-gray);
+  }
+
+  span {
+    color: var(--color-gray-black);
+  }
+
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      background: var(--color-gray-black);
+      color: var(--color-white);
+      border-color: transparent;
+
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button has icon
+// // ---------------------------------------------------------------------------------------------------------------------
+.button:has(svg) {
+  display: flex;
+  @include flex-gap(both, var(--space-s));
+
+  svg {
+    color: inherit;
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button disabled
+// // ---------------------------------------------------------------------------------------------------------------------
+.button:disabled,
+.button[aria-disabled='true'],
+.button.disabled {
+  cursor: not-allowed;
+  border-color: transparent;
+  background: var(--color-philippine-gray);
+  color: var(--color-white);
+
+  span {
+    color: var(--color-white);
+  }
+
+  &:hover {
+    @media (hover: hover) and (pointer: fine) {
+      border-color: transparent !important;
+      background: var(--color-philippine-gray) !important;
+      color: var(--color-white) !important;
+
+      span {
+        color: var(--color-white) !important;
+      }
+    }
+  }
+}
+
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button round
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--round {
+  padding: 0;
+  border-radius: 50%;
+  min-width: unset;
+  width: var(--button-height);
+  height: var(--button-height);
+
+  @include media-breakpoint-down(md) {
+    width: var(--button-height-mobile);
+    height: var(--button-height-mobile);
+    min-height: initial;
+  }
+
+  &.button--large {
+    @include media-breakpoint-up(md) {
+      width: var(--button-height-large);
+      height: var(--button-height-large);
+      min-height: var(--button-height-large);
+    }
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button loading
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--loading,
+.button.button--loading[aria-disabled='true'] {
+  color: transparent;
+  position: relative;
+  background: var(--color-gray-black);
+  transition: unset;
+
+  span {
+    color: transparent !important;
+    transition: unset;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--color-white);
+    border-top: 3px solid var(--color-gray-black);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button add to cart
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--add-to-cart {
+  &.checked {
+    svg {
+      stroke-dasharray: 150;
+      animation-name : check;
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+      vertical-align: middle;
+      animation: check 1s alternate infinite;
+    }
+  }
+}
+
+@keyframes check {
+  0% {
+      stroke-dashoffset: 150;
+  }
+  100% {
+      stroke-dashoffset: 0;
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button checked
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--checked {
+  border: solid 1px var(--color-gray-black);
+  color: var(--color-gray-black);
+  background: var(--color-white);
+
+  span {
+    color: var(--color-gray-black);
+  }
+
+  &:before {
+    content: '';
+    position: relative;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='15' height='11' viewBox='0 0 15 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 5L5.5 9.5L14 1' stroke='%23292525'/%3E%3C/svg%3E%0A");
+    width: 24px;
+    height: 24px;
+    margin-right: var(--space-xs);
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Global fixes
+// ---------------------------------------------------------------------------------------------------------------------
+
+/* prevent the click event to be catched by the span element inside the button element */
+button > span {
+  pointer-events: none;
+}

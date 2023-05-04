@@ -7,8 +7,21 @@ const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    const setVhProperty = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--window-inner-height', `${vh}px`);
+    };
+
     window.onload = () => {
       setIsLoaded(true);
+    };
+
+    setVhProperty();
+
+    window.addEventListener('resize', setVhProperty);
+
+    return () => {
+      window.removeEventListener('resize', setVhProperty);
     };
   }, []);
 

@@ -57,8 +57,6 @@ const PictureImg: React.FC<PictureImgProps> = ({
         })
         .join(', ');
 
-        console.log(mobileImg);
-
     const srcSetParameterMobile = mobileImg ? widthsArrayMobile
         .map((width: string) => {
             const widthForImageURL = `${width}x`;

@@ -1,0 +1,167 @@
+@import "../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Navigation mobile drawer
+// ---------------------------------------------------------------------------------------------------------------------
+
+w3-drawer.drawer-navigation {
+    --drawer-width: 85vw;
+    --padding-sidebar: var(--space-l);
+}
+
+body:has(.drawer-navigation.drawer--visible) {
+    .shopify-section-header {
+        z-index: 2;
+    }
+}
+   
+.drawer-navigation.drawer--visible {
+    .navigation-linklist__image,
+    .navigation-sublist__push .push-card {
+        display: block; // lazyload
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Navigation mobile
+// ---------------------------------------------------------------------------------------------------------------------
+
+w3-navigation-mobile {
+    --nav-subitems-height: auto; // same as drawer__content - filled in JS
+    --main-linklist-image-preview-size: 3.375rem;
+    --header-height: 3rem;
+
+    &[data-current-level="1"] {
+        .nav-previous {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--global-transition-speed) var(--global-ease);
+        }
+    }
+
+    &:not([data-current-level="1"]) {
+        .navigation-mobile__title,
+        .nav-previous {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity var(--global-transition-speed) var(--global-ease);
+        }
+    }
+
+    .drawer__header {
+        height: var(--header-height);
+        margin: 0 var(--padding-sidebar);
+        border-bottom: 1px solid var(--color-bright-gray);
+
+        svg.logo-min {
+            height: calc(var(--header-height) - var(--space-m) * 2 - var(--space-xs));
+            fill: var(--color-gray-black);
+        }
+    }
+
+    // reset padding to prevent overflow
+    .drawer__sidebar {
+        padding: 0;
+        margin: 0;
+        border-radius: 0 10px 0 0;
+    }
+    
+    .navigation-sublist,
+    footer {
+        padding: var(--padding-sidebar);
+    }
+
+    .drawer__content {
+        height: var(--nav-subitems-height);
+        z-index: 1;
+
+        &:has(.navigation-sublist.visible) {
+            overflow: unset;
+        }
+    }
+
+    .navigation-mobile__title {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        transition: opacity var(--global-transition-speed) var(--global-ease);
+    }
+
+    .navigation-linklist {
+        &__item {
+            padding-left: var(--padding-sidebar);
+            padding-right: var(--padding-sidebar);
+        }
+
+        .navigation-linklist__item:not(.item-background) + .item-background {
+            >a {
+                border-color: transparent;
+            }
+        }
+
+        .item-background + .item-background {
+            >a {
+                border-color: var(--color-white);
+            }
+        }
+
+        &__item {
+            &:not(:first-of-type) {
+                >a {
+                    border-top: 1px solid var(--color-bright-gray);
+                }
+            }
+
+            svg {
+                opacity: .6;
+            }
+        }
+
+        &__label {
+            &.title-italic {
+              font-size: 1.1rem;
+            }
+        }
+
+        &__image {
+            display: none; // lazyload
+            width: var(--main-linklist-image-preview-size);
+            height: var(--main-linklist-image-preview-size);
+        }
+    }
+
+    .navigation-sublist {
+        display: none;
+        // height: 0; find a way to prevent calculated height in parent
+        overflow-x: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        left: calc(100% + var(--padding-sidebar));
+        width: 100%;
+        background-color: var(--color-white);
+        transition: left var(--global-transition-speed) var(--global-ease); // do not change to all
+
+        &.visible {
+            display: block;
+            height: 100%;
+            height: calc(var(--100-vh) - var(--header-height));
+            // max-height: var(--nav-subitems-height); // calculated in js
+            overflow-y: auto;
+            z-index: 2;
+            left: 0;
+            visibility: visible;
+            transition: left var(--global-transition-speed) var(--global-ease);
+        }
+
+        &__push {
+            .push-card {
+                display: none; // lazyload
+                @include aspect-ratio(1,1);
+            }
+        }
+    }
+}
