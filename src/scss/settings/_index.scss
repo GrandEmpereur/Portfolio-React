@@ -28,6 +28,31 @@
     --100-vh: calc(var(--window-inner-height, 1vh) * 100);
 }
 
+/* Pour supprimer la barre de défilement sur l'ensemble du document */
+html {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* Pour les navigateurs basés sur Firefox */
+    -ms-overflow-style: none;
+    /* Pour Internet Explorer et Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    /* Pour les navigateurs basés sur WebKit (Chrome, Safari, etc.) */
+}
+
+/* Pour supprimer la barre de défilement sur un élément spécifique */
+.custom-scroll-element {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.custom-scroll-element::-webkit-scrollbar {
+    display: none;
+}
+
 html,
 body {
     position: relative;

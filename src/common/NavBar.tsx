@@ -13,14 +13,10 @@ const NavBar: React.FC = () => {
                         mainImg={{
                             url: () => "./images/preloader.png",
                             alt: "Preloader",
-                            width: 32,
-                            height: 32,
                         }}
                         mobileImg={{
                             url: () => "./images/preloader.png",
                             alt: "Preloader",
-                            width: 32,
-                            height: 32,
                         }}
                         alt="Logo"
                         pictureClasses="nav__logo"
@@ -28,15 +24,15 @@ const NavBar: React.FC = () => {
                 </Link>
             </div>
             <div className="nav-bar__center">
-                <Link to="/projects" className="nav-bar__projects u-gold">
+                <Link to="/projects" className="nav-bar__projects u-gold u-flex flex-column align-items-center">
                     <Icon symbolId="icon-menu" className="custom-icon" />
-                    <span>Projects</span>
+                    <span className="u-underline--hover ">Projects</span>
                 </Link>
             </div>
             <div className="nav-bar__links">
-                <Link to="/about" className="u-gold">À props</Link>
-                <Link to="/services" className="u-gold">Services</Link>
-                <Link to="/contact" className="u-gold">Contact</Link>
+                <Link to="/about" className="u-gold u-underline--hover ">À props</Link>
+                <Link to="/services" className="u-gold u-underline--hover ">Services</Link>
+                <Link to="/contact" className="u-gold u-underline--hover ">Contact</Link>
             </div>
         </nav>
     );

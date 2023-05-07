@@ -1,0 +1,18 @@
+@import "../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Home - specific template to be included in homepage
+// ---------------------------------------------------------------------------------------------------------------------
+
+// header above main slider
+#MainContent {
+    margin-top: calc(var(--header-height) * -1);
+    
+    .react-component {
+        margin-top: 100px;
+    
+        @include media-breakpoint-down(lg) {
+            margin-top: 100px;
+        }
+    }
+}

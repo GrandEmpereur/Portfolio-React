@@ -3,8 +3,6 @@ import React, { CSSProperties } from 'react';
 interface Image {
     url(options?: { width: string }): string;
     alt: string;
-    width: number;
-    height: number;
 }
 
 interface PictureImgProps {

@@ -8,19 +8,15 @@ export interface IconProps {
     size?: number;
     fill?: string;
     stroke?: string;
-    strokeWidth?: number;
-    strokeLinecap?: 'butt' | 'round' | 'square';
 }
 
 const Icon: React.FC<IconProps> = ({
     name,
     symbolId,
     className,
-    size = 24,
+    size = 32,
     fill = 'none',
     stroke = 'currentColor',
-    strokeWidth = 1.5,
-    strokeLinecap = 'round',
 }) => {
     const formatName = (iconName: string): keyof typeof Icons => {
         const formattedName = iconName.split('-')
@@ -40,8 +36,6 @@ const Icon: React.FC<IconProps> = ({
                 height={size}
                 fill={fill}
                 stroke={stroke}
-                strokeWidth={strokeWidth}
-                strokeLinecap={strokeLinecap}
                 className={`icon icon-${symbolId} ${className}`}
             >
                 <use href={`#${symbolId}`} />

@@ -7,21 +7,17 @@ import Icon from "./Icon.tsx";
 const Footer: React.FC = () => {
 
     return (
-        <nav className="footer page-width-large">
+        <footer className="footer page-width-large u-flex align-items-center justify-content-between">
             <div className="footer__logo">
                 <Link to="/">
                     <PictureImg
                         mainImg={{
                             url: () => "./images/preloader.png",
                             alt: "Preloader",
-                            width: 32,
-                            height: 32,
                         }}
                         mobileImg={{
                             url: () => "./images/preloader.png",
                             alt: "Preloader",
-                            width: 32,
-                            height: 32,
                         }}
                         alt="Logo"
                         pictureClasses="nav__logo"
@@ -33,18 +29,18 @@ const Footer: React.FC = () => {
                 <Link to="/projects" className="nav-bar__projects u-gray">Mention Légales</Link>
                 <Link to="/projects" className="nav-bar__projects u-gray">CGU</Link>
             </div>
-            <div className="footer__socialMedia u-flex h-gap-l">
-                <a href="">
-                    <Icon name="GitHub" className="custom-icon u-gold" />
+            <div className="footer__socialMedia u-flex h-gap-l align-items-center">
+                <a href="https://github.com/GrandEmpereur" target="_blank" className="u-flex align-items-center">
+                    <Icon symbolId="icon-github" size={32}/>
                 </a>
-                <a href="">
-                    <Icon name="Linkedin" className="custom-icon u-gold" />
+                <a href="" target="_blank" className="u-flex align-items-center">
+                    <Icon symbolId="icon-linkedin" size={32}/>
                 </a>
-                <a href="">
-                    <Icon name="Twitter" className="custom-icon u-gold" />
+                <a href="" target="_blank" className="u-flex align-items-center">
+                    <Icon symbolId="icon-instagram" size={32}/>
                 </a>
             </div>
-        </nav>
+        </footer>
     );
 };
 
