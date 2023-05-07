@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PictureImg from "../components/PictureImg.tsx";
-import "../scss/common/NavBar.scss";
+import "../scss/sections/NavBar.scss";
 import Icon from "./Icon.tsx";
 
 const NavBar: React.FC = () => {

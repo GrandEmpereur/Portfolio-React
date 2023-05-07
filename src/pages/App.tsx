@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Preloader from "../components/Preloader";
-import Header from "../common/Header";
 import Footer from "../common/Footer";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
@@ -35,7 +34,6 @@ const App: React.FC = () => {
         <Preloader />
       ) : (
         <Router>
-          <Header />
           <NavBar />
           <main>
             <Routes>
