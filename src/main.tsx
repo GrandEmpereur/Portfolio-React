@@ -1,10 +1,16 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './pages/App.tsx'
-import './scss/index.scss'
+import App from './pages/App'
+import './scss/common.scss'
+import SVGDefinitions from './assets/svg-definition'
+import Header from './common/Header'
+import'./scss/templates/App.scss'
+import CustomScrollbar from './common/CustomScrollbar'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <div id="MainContent">
+        <SVGDefinitions />
+        <Header />
+        <App />
+        <CustomScrollbar />
+    </div>
 )

@@ -3,15 +3,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 :root {
-    // Fonts
-    --heading-font-family: 'Amaranth', sans-serif;
-    --body-font-family: 'Crimson Text', serif;
-
-    // Typography
-    --base-text-size: 0.875rem;
+    // typography
+    --base-text-size: 0.875rem; // 14px
     --text-size-increment: 1.2;
-    --base-text-line-height: 1.3125rem;
-
+    --base-text-line-height: 1.1875rem;
     --text-xs: calc(var(--base-text-size) / var(--text-size-increment));
     --text-s: var(--base-text-size);
     --text-m: calc(var(--text-s) * var(--text-size-increment));
@@ -20,15 +15,20 @@
     --text-2xl: calc(var(--text-xl) * var(--text-size-increment));
     --text-3xl: calc(var(--text-2xl) * var(--text-size-increment));
     --text-4xl: calc(var(--text-3xl) * var(--text-size-increment));
-
     --line-height-fixed-amount: 0.35rem;
     --line-height-relative-amount: 1.1em;
     --globalLineHeight: calc(var(--line-height-fixed-amount) + var(--line-height-relative-amount));
 
-    // Spacing
+    // Fonts
+    --heading-font-family: 'Amaranth', sans-serif;
+    --heading-italic-font-family: 'Amaranth', sans-serif;
+    --body-font-family: 'Crimson Text', serif;
+    --body-font-weight: 400;
+    --heading-font-weight: 400;
+
+    // spacing
     --unit: 0.5rem;
     --space-increment: 1.65;
-
     --space-xs: calc(var(--unit) / var(--space-increment));
     --space-s: var(--unit);
     --space-m: calc(var(--space-s) * var(--space-increment));
@@ -42,11 +42,50 @@
     --color-gray-black: #1E1E1E;
     --color-gray: #696969;
     --color-white: #fff;
+    --color-dark-black: #292525;
     --color-black: #030302;
     --color-gold: #DAB967;
     --color-error: #E2918C;
     --color-success: #88BEA2;
 
-    // Grid
+    // grid
     --page-width: 90rem;
+    --grid-cols: 34;
+    --grid-col-start: 3;
+    --grid-col-end: 33;
+    --grid-col-gap: 0.8125rem;
+    --grid-row-gap: 12px;
+    --grid-outside-gap: 0.75rem;
+    --grid-outside-gap-large: 3.125rem;
+    --grid-col-start-short: 10;
+    --grid-col-end-short: 27;
+    --grid-col-start-large: 2;
+    --grid-col-end-large: 26;
+    --grid-cols-mobile: 16;
+    --grid-col-start-mobile: 1;
+    --grid-col-end-mobile: 17;
+    --grid-col-gap-mobile: 10px;
+    --grid-col-start-short-mobile: 3;
+    --grid-col-end-short-mobile: 15;
+    --grid-outside-gap-mobile: 0.8125rem;
+    --button-border-radius: 70px;
+
+    // aspect-ratio
+    --product-card-aspect-ratio: 3 / 4;
+
+    // misc.
+    --field-border-radius: 10px;
+    --field-border-width: 2px;
+    --global-transition-speed: 200ms;
+    --global-transition-speed-longer: 400ms;
+    --global-ease: cubic-bezier(0.40, 0, 0, 1);
+    --global-easeReverse: cubic-bezier(1, 0, 0, 0.40);
+    --duration-short: var(--global-transition-speed);
+    --duration-default: var(--global-transition-speed);
+    --duration-long: var(--global-transition-speed-longer);
+    --global-transition: all var(--global-transition-speed) var(--global-ease);
+
+    // Shopify Dawn
+    --font-body-scale: var(--text-s);
+    --font-heading-scale: var(--text-l);
 }

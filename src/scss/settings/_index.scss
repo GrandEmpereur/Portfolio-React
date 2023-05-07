@@ -28,19 +28,44 @@
     --100-vh: calc(var(--window-inner-height, 1vh) * 100);
 }
 
+/* Pour supprimer la barre de défilement sur l'ensemble du document */
+html {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* Pour les navigateurs basés sur Firefox */
+    -ms-overflow-style: none;
+    /* Pour Internet Explorer et Edge */
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    /* Pour les navigateurs basés sur WebKit (Chrome, Safari, etc.) */
+}
+
+/* Pour supprimer la barre de défilement sur un élément spécifique */
+.custom-scroll-element {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.custom-scroll-element::-webkit-scrollbar {
+    display: none;
+}
+
 html,
 body {
     position: relative;
 
     /* Track */
     &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px var(--color-raisin-black);
+        box-shadow: inset 0 0 5px var(--color-gray-black);
         border-radius: 10px;
     }
 
     /* Handle */
     &::-webkit-scrollbar-thumb {
-        background: var(--color-raisin-black);
+        background: var(--color-gray-black);
         border-radius: 10px;
     }
 
@@ -64,10 +89,10 @@ body {
     font-family: var(--body-font-family);
     font-weight: var(--body-font-weight);
     font-size: var(--font-body-scale);
-    color: var(--color-raisin-black);
+    color: var(--color-white);
     line-height: var(--base-text-line-height);
     font-style: var(--font-body-style);
-    background: var(--color-lotion);
+    background: var(--color-gray-black);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -81,5 +106,5 @@ html.lock-scroll body {
 
 ::selection {
     color: var(--color-bright-gray) !important;
-    background: var(--color-raisin-black) !important;
+    background: var(--color-gray-black) !important;
 }
