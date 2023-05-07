@@ -23,6 +23,25 @@ interface PictureImgProps {
     loadLazy?: boolean;
 }
 
+/*
+    * PictureImg component
+    * @param {object} mainImg - main image object
+    * @param {object} mobileImg - mobile image object
+    * @param {string} alt - image alt text
+    * @param {string} pictureClasses - classes for picture element
+    * @param {string} imageClasses - classes for image element
+    * @param {string} ratio - image ratio
+    * @param {string} mobileRatio - mobile image ratio
+    * @param {string} imgWidths - image widths
+    * @param {string} mobileWidths - mobile image widths
+    * @param {string} defaultImgWidth - default image width
+    * @param {string} breakWidth - breakpoint width
+    * @param {boolean} swiperImage - is image in swiper
+    * @param {boolean} loadLazy - is image lazy loaded
+    * @returns {JSX.Element}
+*/
+
+
 const PictureImg: React.FC<PictureImgProps> = ({
     mainImg,
     mobileImg,

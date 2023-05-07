@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import HomePage from "./HomePage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Preloader from "../components/Preloader";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
+import Home from "./Home";
+import NavBar from "../common/NavBar";
 import "../scss/templates/App.scss";
 
 const App: React.FC = () => {
@@ -9,23 +13,42 @@ const App: React.FC = () => {
   useEffect(() => {
     const setVhProperty = () => {
       const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--window-inner-height', `${vh}px`);
+      document.documentElement.style.setProperty("--window-inner-height", `${vh}px`);
     };
 
-    window.onload = () => {
+    const timer = setTimeout(() => {
       setIsLoaded(true);
-    };
+    }, 5000);
 
     setVhProperty();
-
-    window.addEventListener('resize', setVhProperty);
+    window.addEventListener("resize", setVhProperty);
 
     return () => {
-      window.removeEventListener('resize', setVhProperty);
+      clearTimeout(timer);
+      window.removeEventListener("resize", setVhProperty);
     };
   }, []);
 
-  return <div className="app">{!isLoaded ? <Preloader /> : <HomePage />}</div>;
+  return (
+    <div className="app">
+      {!isLoaded ? (
+        <Preloader />
+      ) : (
+        <Router>
+          <Header />
+          <NavBar />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<Home />} />
+              <Route path="/contact" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
+        </Router>
+      )}
+    </div>
+  );
 };
 
 export default App;
