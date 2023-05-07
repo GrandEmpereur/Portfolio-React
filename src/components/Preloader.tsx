@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import PictureImg from "./PictureImg";
 import "../scss/components/Preloader.scss";
 
-const Preloader: React.FC = () => {
+interface PreloaderProps {
+    style?: React.CSSProperties;
+}
+
+const Preloader: React.FC<PreloaderProps> = ({ style }) => {
     const [count, setCount] = useState(0);
     const intervalRef = useRef<ReturnType<typeof setInterval> | undefined>();
 
@@ -25,21 +29,17 @@ const Preloader: React.FC = () => {
     }, [count]);
 
     return (
-        <div className="preloader page-width-large page-width-mobile">
+        <div className="preloader page-width-large page-width-mobile" style={style}>
             <p className="preloader__counter h1 u-gold u-pad-t-xl keep-size">{count}</p>
             <div className="preloader__animation u-absolute u-absolute-center">
                 <PictureImg
                     mainImg={{
                         url: () => "./images/preloader.png",
                         alt: "Preloader",
-                        width: 100,
-                        height: 100,
                     }}
                     mobileImg={{
                         url: () => "./images/preloader.png",
                         alt: "Preloader",
-                        width: 100,
-                        height: 100,
                     }}
                 />
             </div>
