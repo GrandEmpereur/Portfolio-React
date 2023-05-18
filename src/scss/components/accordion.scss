@@ -1,0 +1,28 @@
+.accordion {
+  summary {
+    cursor: pointer;
+    .icon {
+      transform: rotate(0deg);
+      transition: all var(--globalTransitionSpeed) var(--globalEase);
+    }
+    .accordion-open {
+      display: block;
+    }
+    .accordion-close {
+      display: none;
+    }
+  }
+
+  &[open] > summary {
+    .icon {
+      transform: rotate(180deg);
+      transition: all var(--globalTransitionSpeed) var(--globalEase);
+    }
+    .accordion-open {
+      display: none;
+    }
+    .accordion-close {
+      display: block;
+    }
+  }
+}

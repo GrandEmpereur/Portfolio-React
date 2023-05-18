@@ -1,11 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Preloader from "../components/Preloader";
 import Footer from "../common/Footer";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
 import "../scss/templates/App.scss";
 import PageTransition from "../common/PageTransition";
+import AboutPage from "./About.tsx";
+
+const MainContent: React.FC = () => {
+    const location = useLocation();
+
+    return (
+        <>
+            <NavBar />
+            <main>
+                <PageTransition>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/about" element={<AboutPage />} />
+                        <Route path="/contact" element={<Home />} />
+                    </Routes>
+                </PageTransition>
+            </main>
+            {location.pathname !== "/" && <Footer />}
+        </>
+    );
+};
 
 const App: React.FC = () => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -31,7 +52,6 @@ const App: React.FC = () => {
         };
     }, []);
 
-
     return (
         <div className="app">
             <div
@@ -42,17 +62,7 @@ const App: React.FC = () => {
             >
                 {isLoaded && (
                     <Router>
-                        <NavBar />
-                        <main>
-                            <PageTransition>
-                                <Routes>
-                                    <Route path="/" element={<Home />} />
-                                    <Route path="/about" element={<Home />} />
-                                    <Route path="/contact" element={<Home />} />
-                                </Routes>
-                            </PageTransition>
-                        </main>
-                        <Footer />
+                        <MainContent />
                     </Router>
                 )}
             </div>

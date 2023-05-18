@@ -1,8 +1,8 @@
 import React from "react";
 import "../scss/sections/About.scss";
 
-const About: React.FC = () => {
-    return <section className="About react-component page-width-large u-flex flex-column v-gap-xl">
+const AboutMe: React.FC = () => {
+    return <section className="About react-component-hero page-width-large u-flex flex-column v-gap-xl">
         <span className="u-center u-gold h3 u-uppercase">À propos de moi</span>
 
         <div className="About__content u-flex justify-content-between align-items-center h-gap-3xl">
@@ -30,4 +30,4 @@ const About: React.FC = () => {
     </section>;
 };
 
-export default About;
+export default AboutMe;

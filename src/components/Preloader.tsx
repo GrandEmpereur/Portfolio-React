@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import PictureImg from "./PictureImg";
-import "../scss/components/Preloader.scss";
 
 interface PreloaderProps {
     style?: React.CSSProperties;

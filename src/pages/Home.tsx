@@ -1,13 +1,12 @@
 import React from "react";
-import "../scss/sections/hero.scss";
 import Hero from "../components/Hero";
-import About from "../components/About";
+import "../scss/sections/hero.scss";
+import "../scss/templates/Home.scss";
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
     return <div className="Home">
         <Hero />
-        <About />
     </div>;
 };
 
-export default App;
+export default Home;

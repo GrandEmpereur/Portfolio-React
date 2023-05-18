@@ -4,7 +4,7 @@ import "../scss/sections/hero.scss";
 import PictureImg from "../components/PictureImg.tsx";
 
 const Hero: React.FC = () => {
-    return <section className="hero page-width-large react-component-hero u-flex align-items-center justify-content-between">
+    return <section className="hero page-width-large react-component-hero u-flex align-items-center justify-content-around u-full-width">
         <div className="hero__content u-flex flex-column v-gap-l">
             <span className="hero__preTitle h4 u-gold">
                 portfolio

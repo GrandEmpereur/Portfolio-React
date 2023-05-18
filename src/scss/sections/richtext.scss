@@ -1,0 +1,59 @@
+@import "../core";
+
+.richtext {
+    text-align: center;
+
+    a {
+        text-decoration: underline;
+        text-underline-offset: 0.2rem;
+    }
+
+    >*+* {
+        margin-top: var(--space-m);
+    }
+
+    >* img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    h1,
+    h1 span {
+        text-transform: uppercase;
+    }
+
+    *+h2 {
+        margin-top: var(--space-l);
+    }
+
+    h2 {
+        margin-bottom: var(--space-l);
+    }
+
+    h2,
+    h2 span {
+        text-transform: uppercase;
+    }
+
+    *+h3 {
+        margin-top: var(--space-m);
+    }
+
+    h3,
+    h3 span {
+        text-transform: uppercase;
+    }
+
+    ul {
+        list-style-type: initial;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    em {
+        font-style: italic;
+        font-family: kepler;
+    }
+}
