@@ -1,7 +1,14 @@
+@import "../core";
+
 .About{
     &__content {
-        &--left {
-            width: 104rem;
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+            text-align: center;
+            @include flex-gap(vertical, var(--space-xl));
+            &--left {
+                width: 100%;
+            }
         }
     }
 }

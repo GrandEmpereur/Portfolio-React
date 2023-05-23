@@ -7,7 +7,7 @@ import Icon from "./Icon.tsx";
 const Footer: React.FC = () => {
 
     return (
-        <footer className="footer page-width-large u-flex align-items-center justify-content-between">
+        <footer className="footer page-width-large page-width-mobile u-flex align-items-center justify-content-between">
             <div className="footer__logo">
                 <Link to="/">
                     <PictureImg

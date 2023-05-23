@@ -1,111 +1,105 @@
-import React, { CSSProperties } from 'react';
+import React, { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 
-interface Image {
-    url(options?: { width: string }): string;
+// Définition des types pour les images
+export interface Image {
+    src: string;
     alt: string;
+    width: number;
+    height: number;
 }
 
-interface PictureImgProps {
-    mainImg: Image;
-    mobileImg?: Image;
+// Ajoutez ceci pour définir les types de vos propriétés personnalisées
+interface Styles extends React.CSSProperties {
+    '--image-aspect-ratio'?: string;
+    '--image-aspect-ratio-lg'?: string;
+    '--image-aspect-ratio-md'?: string;
+}
+
+// Définition des props pour le composant PictureImg
+export interface PictureImgProps {
+    img: Image;
+    imgMobile?: Image;
     alt?: string;
-    pictureClasses?: string;
-    imageClasses?: string;
-    ratio?: string;
-    mobileRatio?: string;
-    imgWidths?: string;
-    mobileWidths?: string;
-    defaultImgWidth?: string;
-    breakWidth?: string;
-    swiperImage?: boolean;
-    loadLazy?: boolean;
+    picture_classes?: string;
+    img_classes?: string;
+    aspect_ratio?: string;
+    aspect_ratio_mobile?: string;
+    widths?: string;
+    widths_mobile?: string;
+    default_width?: string;
+    breakpoint_width?: string;
+    is_swiper?: boolean;
+    lazy?: boolean;
 }
-
-/*
-    * PictureImg component
-    * @param {object} mainImg - main image object
-    * @param {object} mobileImg - mobile image object
-    * @param {string} alt - image alt text
-    * @param {string} pictureClasses - classes for picture element
-    * @param {string} imageClasses - classes for image element
-    * @param {string} ratio - image ratio
-    * @param {string} mobileRatio - mobile image ratio
-    * @param {string} imgWidths - image widths
-    * @param {string} mobileWidths - mobile image widths
-    * @param {string} defaultImgWidth - default image width
-    * @param {string} breakWidth - breakpoint width
-    * @param {boolean} swiperImage - is image in swiper
-    * @param {boolean} loadLazy - is image lazy loaded
-    * @returns {JSX.Element}
-*/
-
 
 const PictureImg: React.FC<PictureImgProps> = ({
-    mainImg,
-    mobileImg,
+    img,
+    imgMobile,
     alt,
-    pictureClasses,
-    imageClasses,
-    imgWidths,
-    mobileWidths,
-    defaultImgWidth,
-    breakWidth,
-    swiperImage,
-    loadLazy,
+    picture_classes,
+    img_classes,
+    aspect_ratio,
+    aspect_ratio_mobile,
+    widths,
+    widths_mobile,
+    default_width,
+    breakpoint_width,
+    is_swiper,
+    lazy,
 }) => {
-    const imgAlt = alt || mainImg.alt;
-    const defaultBreakpointWidth = '1024';
-    const defaultWidths = mobileImg
-        ? '320, 512, 768, 1024, 1200, 1440, 1920'
-        : '768, 1024, 1200, 1440, 1920';
-    const defaultWidthsMobile = '160, 320, 512, 720';
+    const [imgUrlSet, setImgUrlSet] = useState("");
+    const [imgUrlSetMobile, setImgUrlSetMobile] = useState("");
 
-    const actualBreakpointWidth = breakWidth || defaultBreakpointWidth;
-    const actualWidths = imgWidths || defaultWidths;
-    const actualWidthsMobile = mobileWidths || defaultWidthsMobile;
+    useEffect(() => {
+        if (img && widths) {
+            setImgUrlSet(generateImageURLSet(img, widths));
+        }
+        if (imgMobile && widths_mobile) {
+            setImgUrlSetMobile(generateImageURLSet(imgMobile, widths_mobile));
+        }
+    }, [img, imgMobile, widths, widths_mobile]);
 
-    const widthsArray = actualWidths.split(', ');
-    const widthsArrayMobile = actualWidthsMobile.split(', ');
+    const classes = `${picture_classes || ''}`;
 
-    const srcSetParameter = widthsArray
-        .map((width: string) => {
-            const widthForImageURL = `${width}x`;
-            return `${mainImg.url({ width: widthForImageURL })} ${width}w`;
-        })
-        .join(', ');
+    const style: Styles = {
+        "--image-aspect-ratio": aspect_ratio,
+        "--image-aspect-ratio-lg": breakpoint_width === '768' ? aspect_ratio : aspect_ratio_mobile,
+        "--image-aspect-ratio-md": aspect_ratio_mobile
+    };
 
-    const srcSetParameterMobile = mobileImg ? widthsArrayMobile
-        .map((width: string) => {
-            const widthForImageURL = `${width}x`;
-            return `${mobileImg.url({ width: widthForImageURL })} ${width}w`;
-        })
-        .join(', ') : undefined;
-
-    return (
+    const PictureContent = () => (
         <picture
-            className={`${pictureClasses}${loadLazy ? ' lozad' : ''}`}
+            className={classes}
+            style={style}
         >
             <source
-                srcSet={srcSetParameter}
-                media={`(min-width: ${actualBreakpointWidth}px)`}
+                srcSet={imgUrlSet}
+                media={`(min-width: ${breakpoint_width || '1024'}px)`}
             />
-            {mobileImg && <source srcSet={srcSetParameterMobile} />}
+            {imgMobile && (
+                <source srcSet={imgUrlSetMobile} />
+            )}
             <img
-                className={imageClasses}
-                loading='lazy'
-                alt={imgAlt}
-                src='data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+                className={img_classes || ''}
+                src={img?.src}
+                alt={alt || img.alt}
+                loading={lazy ? 'lazy' : 'eager'}
             />
-            <noscript>
-                <img
-                    src={mainImg.url({ width: actualBreakpointWidth })}
-                    loading='lazy'
-                    alt={imgAlt}
-                />
-            </noscript>
         </picture>
     );
+
+    return (
+        lazy ? <LazyLoad>{PictureContent()}</LazyLoad> : PictureContent()
+    );
 };
+
+function generateImageURLSet(image: Image, widths: string): string {
+    return widths
+        .split(", ")
+        .map(width => `${image.src}?width=${width} ${width}w`)
+        .join(", ");
+}
 
 export default PictureImg;
 

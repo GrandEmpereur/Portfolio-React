@@ -19,7 +19,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, items, isOpen, onClick }) 
                     <Icon name="ArrowDown" className="icon" />
                 </span>
             </summary>
-            <div className="u-flex flex-wrap align-items-center u-pad-t-l ">
+            <div className="u-flex flex-wrap align-items-center u-pad-t-l gap-xl ">
                 {items.map((item, itemIndex) => (
                     <div key={itemIndex} className="section-skills__subtitle u-flex align-items-center h-gap-m">
                         <img src={item.logo} alt={`${item.skill} logo`} className="skill-logo" />
@@ -43,52 +43,60 @@ const Skills: React.FC = () => {
         {
             title: "Compétences en développement Front-End",
             items: [
-                { skill: 'React JS', logo: './images/React.svg' },
-                { skill: 'Nuxt JS', logo: './images/Nuxt.svg' },
-                { skill: 'Vue JS', logo: './images/vue.svg' }
+                { skill: 'React JS', logo: './images/icon/React.svg' },
+                { skill: 'Nuxt JS', logo: './images/icon/Nuxt.svg' },
+                { skill: 'Sass', logo: './images/icon/Scss.svg' }
             ]
         },
         {
             title: "Compétences en développement back-end",
             items: [
-                { skill: 'Node JS', logo: './images/vue.svg' },
-                { skill: 'MongoDb', logo: './images/vue.svg' },
-                { skill: 'MySql', logo: './images/vue.svg' },
-                { skill: 'API Rest', logo: './images/vue.svg' }
-            ]
-        },
-        {
-            title: "Compétences en tests unitaires",
-            items: [
-                { skill: 'Vitest', logo: './images/vitest.svg' },
-                { skill: 'Jest', logo: './images/vue.svg' }
+                { skill: 'Node JS', logo: './images/icon/Node.svg' },
+                { skill: 'Laravel', logo: './images/icon/Laravel.svg' },
+                { skill: 'Typescript', logo: './images/icon/Ts.svg' },
+                { skill: 'API Rest', logo: './images/icon/Api.svg'  }
             ]
         },
         {
             title: "Compétences en développement CMS & HeadLess CMS",
             items: [
-                { skill: 'Shopify | Shopify Plus', logo: './images/vue.svg' },
-                { skill: 'Wordpress', logo: './images/vue.svg' },
-                { skill: 'Strapi', logo: './images/vue.svg' }
+                { skill: 'Shopify | Shopify Plus', logo: './images/icon/Shopify.svg' },
+                { skill: 'Wordpress', logo: './images/icon/Wordpress.svg' },
+                { skill: 'Strapi', logo: './images/icon/Strapi.svg' }
             ]
-        }
+        },
+        {
+            title: "Autre compétences",
+            items: [
+                { skill: 'Vitest', logo: './images/icon/Vitest.svg' },
+                { skill: 'Code Review', logo: './images/icon/Git.svg' },
+                { skill: 'Clean Code', logo: './images/icon/CleanCode.svg' },
+            ]
+        },
     ];
 
     return (
-        <section className="react-component section-skills page-width-desktop page-width-large">
+        <section className="react-component section-skills page-width-large page-width-mobile">
             <div className="skills-wrapper u-flex  h-gap-4xl align-items-center">
                 <div className="skills-image u-flex">
                     <PictureImg
-                        mainImg={{
-                            url: () => "./images/skills.jpg",
-                            alt: "Image représentant diverses compétences en développement de logiciels",
+                        img={{
+                            src: "./images/skills.jpg",
+                            alt: "Image de présentation",
+                            width: 30,
+                            height: 30,
                         }}
-                        mobileImg={{
-                            url: () => "./images/skills.jpg",
-                            alt: "Image représentant diverses compétences en développement de logiciels",
+                        imgMobile={{
+                            src: "./images/skills.jpg",
+                            alt: "Image de présentation",
+                            width: 30,
+                            height: 30,
                         }}
-                        alt="hero"
-                        pictureClasses="section-skills__image u-rounded-border"
+                        widths="420, 768, 1024"
+                        widths_mobile="320, 480, 640"
+                        default_width="420"
+                        breakpoint_width="768"
+                        picture_classes="section-skills__image u-rounded-border"
                     />
                 </div>
                 <div className="skills-accordion u-full-width">

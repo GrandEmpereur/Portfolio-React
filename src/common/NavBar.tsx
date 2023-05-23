@@ -6,20 +6,26 @@ import Icon from "./Icon.tsx";
 
 const NavBar: React.FC = () => {
     return (
-        <nav className="nav-bar page-width-large">
+        <nav className="nav-bar page-width-large page-width-mobile">
             <div className="nav-bar__logo">
                 <Link to="/">
                     <PictureImg
-                        mainImg={{
-                            url: () => "./images/preloader.png",
-                            alt: "Preloader",
+                        img={{
+                            src: "./images/logo.png",
+                            alt: "Logo",
+                            width: 30,
+                            height: 30,
                         }}
-                        mobileImg={{
-                            url: () => "./images/preloader.png",
-                            alt: "Preloader",
+                        imgMobile={{
+                            src: "./images/logo.png",
+                            alt: "Logo",
+                            width: 30,
+                            height: 30,
                         }}
-                        alt="Logo"
-                        pictureClasses="nav__logo"
+                        widths="420, 768, 1024"
+                        widths_mobile="320, 480, 640"
+                        default_width="420"
+                        breakpoint_width="768"
                     />
                 </Link>
             </div>

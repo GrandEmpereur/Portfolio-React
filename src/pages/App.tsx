@@ -6,7 +6,8 @@ import Home from "./Home";
 import NavBar from "../common/NavBar";
 import "../scss/templates/App.scss";
 import PageTransition from "../common/PageTransition";
-import AboutPage from "./About.tsx";
+import AboutPage from "./About";
+import Project from "./Project";
 
 const MainContent: React.FC = () => {
     const location = useLocation();
@@ -18,6 +19,7 @@ const MainContent: React.FC = () => {
                 <PageTransition>
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/projects" element={<Project />} />
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/contact" element={<Home />} />
                     </Routes>
@@ -52,6 +54,13 @@ const App: React.FC = () => {
         };
     }, []);
 
+    const preloaderLogo = {
+        src: "./images/preloader.png",
+        alt: "Logo",
+        width: 420,
+        height: 430,
+    };
+
     return (
         <div className="app">
             <div
@@ -66,7 +75,7 @@ const App: React.FC = () => {
                     </Router>
                 )}
             </div>
-            {!isLoaded && <Preloader />}
+            {!isLoaded && <Preloader logo={preloaderLogo} />}
         </div>
     );
 };

@@ -2,28 +2,26 @@ import React from "react";
 import "../scss/sections/About.scss";
 
 const AboutMe: React.FC = () => {
-    return <section className="About react-component-hero page-width-large u-flex flex-column v-gap-xl">
-        <span className="u-center u-gold h3 u-uppercase">À propos de moi</span>
+    return <section className="About react-component-hero page-width-large page-width-mobile u-flex flex-column v-gap-xl">
+        <h2 className="u-center u-gold h3 keep-size u-uppercase">Qui suis-je ?</h2>
 
         <div className="About__content u-flex justify-content-between align-items-center h-gap-3xl">
-            <div className="About__content--left u-flex flex-column v-gap-xl u-text-m">
-                <p className="">Depuis mon enfance, je suis fasciné par la programmation et la conception. Cette passion a été alimentée par les jeux auxquels je jouais et les sites web que je visitais, m'émerveillant devant les possibilités infinies et la créativité que ces univers offraient.</p>
-                <p>Depuis mon enfance, je suis fasciné par la programmation et la conception. Cette passion a été alimentée par les jeux auxquels je jouais et les sites web que je visitais, m'émerveillant devant les possibilités infinies et la créativité que ces univers offraient.</p>
-                <p>En tant que développeur web dévoué, je m'efforce constamment d'élargir mes compétences et de rester à jour avec les dernières tendances et technologies. Cette quête d'excellence me permet de créer des expériences utilisateur mémorables et de relever des défis complexes pour satisfaire les besoins de mes clients.</p>
+            <div className="About__content--left u-flex flex-column v-gap-xl">
+                <p>Ma fascination pour la programmation et la conception remonte à mon enfance. Les jeux auxquels je jouais et les sites web que je visitais m'ont fait rêver aux possibilités illimitées et à la créativité que ces mondes peuvent offrir.</p>
+                <p>À présent, en tant que développeur web passionné, je m'efforce constamment de renforcer mes compétences et de rester à jour avec les dernières tendances et technologies. C'est cette quête incessante d'excellence qui me permet de créer des expériences utilisateur inoubliables et de relever des défis techniques de plus en plus complexes pour répondre aux besoins de mes clients.</p>
             </div>
             <div className="About__content--right u-flex flex-column v-gap-xl">
                 <div className="u-flex flex-column v-gap-m">
-                    <span className="h4">Ce que je recherche</span>
-                    <p>Emploi à temps plein en tant que développeur full-stack que cela oit dans une entreprise ou une agence web, mai également des client pour des projet freelance</p>
+                    <h3 className="h4 keep-size">Mes objectifs</h3>
+                    <p>Je suis à la recherche d'une alternance de deux ans en tant que développeur full-stack, avec une préférence pour le développement back-end. Que ce soit au sein d'une entreprise ou d'une agence web, toutes les propositions sont les bienvenues. Par ailleurs, étant également freelance à temps partiel, je suis ouvert à divers projets que vous auriez.</p>
                 </div>
                 <div className="u-flex flex-column v-gap-m">
-                    <span className="h4">Éducation</span>
-                    <p>Je suis actuellement en troisième année de "Codage & Innovation Numérique" à l'IIM, où je me suis spécialisé dans le développement de sites web. En plus de mes compétences en programmation, je possède également des talents en design graphique.</p>
+                    <h3 className="h4 keep-size">Éducation</h3>
+                    <p>Je suis actuellement en troisième année de "Coding & digital innovation " à l'IIM. J'ai choisi de me spécialiser dans le développement web. En plus de mes compétences en programmation, j'ai également développé des talents en design graphique.</p>
                 </div>
                 <div className="u-flex flex-column v-gap-m">
-                    <span className="h4">expérience précédente</span>
-                    <p>J'ai effectué un stage et suis actuellement en alternance au sein de l'agence web W3lead.
-                        En parallèle, j'ai également réalisé quelques projets personnels pour développer davantage mes compétences et ma créativité.</p>
+                    <h3 className="h4 keep-size">Expérience précédente</h3>
+                    <p>J'ai réalisé un stage et je suis actuellement en alternance au sein de l'agence web W3lead. Parallèlement à cela, j'ai également travaillé sur plusieurs projets personnels pour approfondir mes compétences et stimuler ma créativité.</p>
                 </div>
             </div>
         </div>
