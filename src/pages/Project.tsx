@@ -2,72 +2,100 @@
 import React from 'react';
 import Slider from '../components/Slider';
 import PictureImg from '../components/PictureImg';
+import '../scss/sections/Project.scss';
 
 // Ceci est un tableau d'images fictif, remplacez-le par vos vraies données d'image
 const imageList = [
     {
-        mainImg: {
-            url: () => "./images/hero.png",
-            alt: 'Image 1'
+        img: {
+            src: "./images/hero.png",
+            alt: 'Image 1',
+            width: 420,
+            height: 430
         },
-        mobileImg: {
-            url: () => "./images/hero.png",
-            alt: 'Image 1 mobile'
+        imgMobile: {
+            src: "./images/hero.png",
+            alt: 'Image 1 mobile',
+            width: 420,
+            height: 430
         }
     },
     {
-        mainImg: {
-            url: () => "./images/hero.png",
-            alt: 'Image 2'
+        img: {
+            src: "./images/skills.jpg",
+            alt: 'Image 2',
+            width: 420,
+            height: 430
         },
-        mobileImg: {
-            url: () => "./images/hero.png",
-            alt: 'Image 2 mobile'
+        imgMobile: {
+            src: "./images/skills.jpg",
+            alt: 'Image 2 mobile',
+            width: 420,
+            height: 430
         }
     },
+    {
+        img: {
+            src: "./images/hero.png",
+            alt: 'Image 2',
+            width: 420,
+            height: 430
+        },
+        imgMobile: {
+            src: "./images/hero.png",
+            alt: 'Image 2 mobile',
+            width: 420,
+            height: 430
+        }
+    },
+    {
+        img: {
+            src: "./images/skills.jpg",
+            alt: 'Image 2',
+            width: 420,
+            height: 430
+        },
+        imgMobile: {
+            src: "./images/skills.jpg",
+            alt: 'Image 2 mobile',
+            width: 420,
+            height: 430
+        }
+    },
+
 ];
 
 
 const Project: React.FC = () => {
     return (
-        <section className="Project react-component-hero page-width-large page-width-mobile u-flex flex-column v-gap-xl">
-            <h2 className="u-center u-gold h3 keep-size u-uppercase">Mes projets</h2>
+        <section className="Project react-component-hero page-width-full-mobile">
 
-            <PictureImg
-                            mainImg={{ url: () => "./images/hero.png", alt: "Image 1" }}
-                            mobileImg={{ url: () => "./images/hero.png", alt: "Image 1 mobile" }}
-                            alt="Image 1"
-                            pictureClasses="hero__image"
-                            imageClasses="hero__image--img"
-                            ratio="56.25%"
-                            mobileRatio="56.25%"
-                            imgWidths="320, 512, 768, 1024, 1200, 1440, 1920"
-                            mobileWidths="320, 512, 768, 1024, 1200, 1440, 1920"
-                            defaultImgWidth="100vw"
-                            breakWidth="1024"
-                        />
+            <div className="u-center">
+                <span className="h2 u-block u-pad-t-s u-marg-b-l">Mes projets</span>
+            </div>
 
-            <Slider >
-                {imageList.map((image, index) => (
-                    <div key={index} className="u-flex justify-content-center">
-                        <PictureImg
-                            mainImg={image.mainImg}
-                            mobileImg={image.mobileImg}
-                            alt={image.mainImg.alt}
-                            pictureClasses="hero__image"
-                            imageClasses="hero__image--img"
-                            ratio="56.25%"
-                            mobileRatio="56.25%"
-                            imgWidths="320, 512, 768, 1024, 1200, 1440, 1920"
-                            mobileWidths="320, 512, 768, 1024, 1200, 1440, 1920"
-                            defaultImgWidth="100vw"
-                            breakWidth="1024"
-                            swiperImage={true}
-                            loadLazy={true}
-                        />
-                    </div>
-                ))}
-            </Slider>
+            <div className="u-overflow--mobile">
+                <Slider
+                    data-desktop-only
+                    data-speed="200"
+                    data-minimum-length-lg="4"
+                >
+                    {imageList.map((image, index) => (
+                        <div className="swiper-items u-full-width swiper-slide u-relative" key={index}>
+                            <PictureImg
+                                img={image.img}
+                                imgMobile={image.imgMobile}
+                                widths="420, 768, 1024"
+                                widths_mobile="320, 480, 640"
+                                aspect_ratio="420/430"
+                                default_width="420"
+                                breakpoint_width="768"
+                                picture_classes="Project__image u-rounded-border"
+                            />
+                        </div>
+                    ))}
+                </Slider>
+            </div>
         </section>
     );
 };

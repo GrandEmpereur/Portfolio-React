@@ -6,7 +6,7 @@ import Skills from "../components/Skills";
 const About: React.FC = () => {
     return <div className="About ">
         <AboutMe />
-        <Skills />
+        {/* <Skills /> */}
     </div>;
 };
 

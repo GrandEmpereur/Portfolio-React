@@ -33,6 +33,26 @@ export interface PictureImgProps {
     lazy?: boolean;
 }
 
+
+/**
+ * 
+ * @name PictureImg
+ * @description Composant pour afficher une image avec des sources d'images multiples
+ * @param {Image} img - Image principale
+ * @param {Image} imgMobile - Image pour les petits écrans
+ * @param {string} alt - Texte alternatif pour l'image
+ * @param {string} picture_classes - Classes CSS pour l'élément <picture>
+ * @param {string} img_classes - Classes CSS pour l'élément <img>
+ * @param {string} aspect_ratio - Ratio de l'image pour les grands écrans
+ * @param {string} aspect_ratio_mobile - Ratio de l'image pour les petits écrans
+ * @param {string} widths - Largeurs des images pour les grands écrans
+ * @param {string} widths_mobile - Largeurs des images pour les petits écrans
+ * @param {string} default_width - Largeur par défaut pour l'image
+ * @param {string} breakpoint_width - Largeur de l'écran pour lequel le ratio de l'image change
+ * @param {boolean} is_swiper - Indique si l'image est utilisée dans un Swiper
+ * @param {boolean} lazy - Indique si l'image doit être chargée de façon paresseuse
+ */
+
 const PictureImg: React.FC<PictureImgProps> = ({
     img,
     imgMobile,

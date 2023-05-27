@@ -1,27 +1,8 @@
 @import "../core";
 
-.slider-pagination {
-    background-color: red;
-    bottom: var(--space-l);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include flex-gap(horizontal, var(--space-s));
-
-    .slider-pagination-bullet {
-        cursor: pointer;
-        border-radius: 50%;
-        height: 8px;
-        width: 8px;
-        transition: color .1s ease-in;
-        background: var(--color-white);
-        opacity: 0.2;
-
-        &--active {
-            opacity: 1;
-        }
-    }
-}
+// ---------------------------------------------------------------------------------------------------------------------
+// Slider CSS
+// ---------------------------------------------------------------------------------------------------------------------
 
 .slider-button {
     &--round {
@@ -103,6 +84,17 @@
         }
     }
 
+    // Adding padding to container to allow for space for the overflowing images
+    padding-left: 20%; // Adjust this value to change how much the first and last images overflow
+    padding-right: 20%; // Adjust this value to change how much the first and last images overflow
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        flex: 0 0 20%;
+    }
+
 }
 
 .swiper-container-pointer-events {
@@ -127,6 +119,8 @@
         flex-direction: column;
         // height: auto;
     }
+
+    gap: 120px;
 }
 
 .swiper-slide {
