@@ -11,4 +11,7 @@ export interface CardProps {
     className?: string;
     pushBackgroundColor?: string;
     default_size?: string;
+    breakpoint_width?: string;
+    is_swiper?: boolean;
+    lazy?: boolean;
 }

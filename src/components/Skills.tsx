@@ -92,10 +92,8 @@ const Skills: React.FC = () => {
                             width: 30,
                             height: 30,
                         }}
-                        widths="420, 768, 1024"
-                        widths_mobile="320, 480, 640"
-                        default_width="420"
-                        breakpoint_width="768"
+                        default_size="420/430"
+                        breakpoint_width="1024"
                         picture_classes="section-skills__image u-rounded-border"
                     />
                 </div>

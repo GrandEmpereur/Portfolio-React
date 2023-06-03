@@ -2,7 +2,6 @@ import React from 'react';
 import PictureImg from './PictureImg';
 import { CardProps } from '../types/Card.types.ts';
 
-
 /**
  * Renders a card with an image and a link.
  *
@@ -19,6 +18,9 @@ import { CardProps } from '../types/Card.types.ts';
  *   className="class class"
  *   pushBackgroundColor="#FFFFFF"
  *   default_size='200/200'
+ *   breakpoint_width='1024'
+ *   is_swiper={false}
+ *   lazy={true}
  * />
  */
 const Card: React.FC<CardProps> = ({
@@ -32,10 +34,17 @@ const Card: React.FC<CardProps> = ({
     className,
     pushBackgroundColor,
     default_size,
+    breakpoint_width,
+    is_swiper,
+    lazy,
 }) => {
     const imgAlt = title || (img ? img.alt : link?.split('/').pop() || '');
     const HeadingTag = hn || "h2";
-    const cardStyle = { backgroundColor: pushBackgroundColor };
+    const cardStyle = { 
+        backgroundColor: pushBackgroundColor, 
+        width: default_size?.split('/')[0]+'px', 
+        height: default_size?.split('/')[1]+'px'
+    };
     const textColorStyle = textColor ? { color: textColor } : {};
 
     return (
@@ -44,7 +53,9 @@ const Card: React.FC<CardProps> = ({
             style={cardStyle}
         >
             {img && (
-                <div className="card__media u-full-wh">
+                <div
+                    className="card__media u-full-wh"
+                >
                     <PictureImg
                         img={img}
                         imgMobile={imgMobile}
@@ -52,6 +63,9 @@ const Card: React.FC<CardProps> = ({
                         picture_classes="card__image u-absolute u-absolute-all u-full-wh"
                         img_classes="u-full-wh"
                         default_size={default_size}
+                        breakpoint_width={breakpoint_width}
+                        is_swiper={is_swiper}
+                        lazy={lazy}
                     />
                 </div>
             )}
@@ -71,7 +85,7 @@ const Card: React.FC<CardProps> = ({
                         )}
                         {urlLabel && link && (
                             <div className="card__actions u-absolute u-absolute-bottom u-absolute-left u-absolute-right u-pad-b-xl u-pad-s">
-                                <a 
+                                <a
                                     className={`card-button link h4 ${!textColor ? 'u-white' : ''}`}
                                     href={link}
                                     style={textColorStyle}

@@ -41,11 +41,23 @@ const Hero: React.FC = () => {
                 </div>
             </div>
 
-            <Card
-                img={image}
-                aspectRatio="420 / 430"
-                className="hero__logo"
-            />
+            <div className="hero__image">
+                <Card
+                    img={image}
+                    imgMobile={image}
+                    title="vv"
+                    urlLabel="vv"
+                    link="vv"
+                    textColor="#fff"
+                    hn="h2"
+                    className="ccc"
+                    pushBackgroundColor="#fff"
+                    default_size="420/430"
+                    breakpoint_width="1024"
+                    is_swiper={false}
+                    lazy={false}
+                />
+            </div>
         </section>
     );
 };

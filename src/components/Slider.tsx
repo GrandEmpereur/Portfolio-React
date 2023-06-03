@@ -31,7 +31,6 @@ Swiper.use([Navigation, Pagination, Autoplay, EffectFade]);
  */
 const Slider: React.FC<SliderProps> = ({
     children,
-    data_desktop_only = false,
     data_resize = false,
     data_minimum_length_lg = 1,
     data_autoplay = false,
@@ -69,8 +68,7 @@ const Slider: React.FC<SliderProps> = ({
             });
             setSwiper(s);
         }
-
-        // Cleanup
+        
         return () => {
             swiper?.destroy(true, true);
         }

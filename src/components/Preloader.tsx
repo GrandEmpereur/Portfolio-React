@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import PictureImg, { Image } from "./PictureImg";
+import PictureImg from "./PictureImg";
+import { Image } from '../types/PictureImg.types.ts';
 import "../scss/components/preloader.scss";
 
 interface PreloaderProps {
@@ -37,10 +38,8 @@ const Preloader: React.FC<PreloaderProps> = ({ style, logo }) => {
                     img={logo}
                     imgMobile={logo}
                     alt="Logo"
-                    widths="420, 768, 1024"
-                    widths_mobile="320, 480, 640"
-                    default_width="420"
-                    breakpoint_width="768"
+                    breakpoint_width="1024"
+                    lazy={false}
                 />
             </div>
         </div>

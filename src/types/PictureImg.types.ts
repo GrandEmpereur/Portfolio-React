@@ -6,12 +6,14 @@
  * @param {string} alt - Alternative text for the image
  * @param {number} width - Width of the image
  * @param {number} height - Height of the image
+ * @param {string[] | undefined} srcSet - Array of source URLs for the image, optional
  */
 export interface Image {
     src: string;
-    alt: string;
+    alt?: string;
     width: number;
     height: number;
+    srcSet?: string[];
 }
 
 /**
