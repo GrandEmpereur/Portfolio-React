@@ -1,98 +1,46 @@
-import React, { useEffect, useState } from 'react';
+// PictureImg.tsx
+import React, { useMemo } from 'react';
 import LazyLoad from 'react-lazyload';
-
-// Définition des types pour les images
-export interface Image {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-}
-
-// Ajoutez ceci pour définir les types de vos propriétés personnalisées
-interface Styles extends React.CSSProperties {
-    '--image-aspect-ratio'?: string;
-    '--image-aspect-ratio-lg'?: string;
-    '--image-aspect-ratio-md'?: string;
-}
-
-// Définition des props pour le composant PictureImg
-export interface PictureImgProps {
-    img: Image;
-    imgMobile?: Image;
-    alt?: string;
-    picture_classes?: string;
-    img_classes?: string;
-    aspect_ratio?: string;
-    aspect_ratio_mobile?: string;
-    widths?: string;
-    widths_mobile?: string;
-    default_width?: string;
-    breakpoint_width?: string;
-    is_swiper?: boolean;
-    lazy?: boolean;
-}
-
+import { PictureImgProps, Image } from '../types/PictureImg.types.ts';
 
 /**
  * 
- * @name PictureImg
- * @description Composant pour afficher une image avec des sources d'images multiples
- * @param {Image} img - Image principale
- * @param {Image} imgMobile - Image pour les petits écrans
- * @param {string} alt - Texte alternatif pour l'image
- * @param {string} picture_classes - Classes CSS pour l'élément <picture>
- * @param {string} img_classes - Classes CSS pour l'élément <img>
- * @param {string} aspect_ratio - Ratio de l'image pour les grands écrans
- * @param {string} aspect_ratio_mobile - Ratio de l'image pour les petits écrans
- * @param {string} widths - Largeurs des images pour les grands écrans
- * @param {string} widths_mobile - Largeurs des images pour les petits écrans
- * @param {string} default_width - Largeur par défaut pour l'image
- * @param {string} breakpoint_width - Largeur de l'écran pour lequel le ratio de l'image change
- * @param {boolean} is_swiper - Indique si l'image est utilisée dans un Swiper
- * @param {boolean} lazy - Indique si l'image doit être chargée de façon paresseuse
+ * @component PictureImg
+ * @description A component for displaying an image with multiple image sources
+ * @param {Image} img - Main image
+ * @param {Image} imgMobile - Image for small screens
+ * @param {string} alt - Alternative text for the image
+ * @param {string} picture_classes - CSS classes for the <picture> element
+ * @param {string} img_classes - CSS classes for the <img> element
+ * @param {string[]} widths - Widths of images for large screens
+ * @param {string[]} widths_mobile - Widths of images for small screens
+ * @param {string} default_size - Default size for the image
+ * @param {string} breakpoint_width - Screen width at which the image ratio changes
+ * @param {boolean} is_swiper - Indicates whether the image is used in a Swiper
+ * @param {boolean} lazy - Indicates whether the image should be loaded lazily
  */
-
 const PictureImg: React.FC<PictureImgProps> = ({
     img,
     imgMobile,
     alt,
     picture_classes,
     img_classes,
-    aspect_ratio,
-    aspect_ratio_mobile,
     widths,
     widths_mobile,
-    default_width,
+    default_size,
     breakpoint_width,
     is_swiper,
     lazy,
 }) => {
-    const [imgUrlSet, setImgUrlSet] = useState("");
-    const [imgUrlSetMobile, setImgUrlSetMobile] = useState("");
-
-    useEffect(() => {
-        if (img && widths) {
-            setImgUrlSet(generateImageURLSet(img, widths));
-        }
-        if (imgMobile && widths_mobile) {
-            setImgUrlSetMobile(generateImageURLSet(imgMobile, widths_mobile));
-        }
-    }, [img, imgMobile, widths, widths_mobile]);
+    // Generate image URL sets using useMemo for performance optimization
+    const imgUrlSet = useMemo(() => generateImageURLSet(img, widths), [img, widths]);
+    const imgUrlSetMobile = useMemo(() => generateImageURLSet(imgMobile, widths_mobile), [imgMobile, widths_mobile]);
 
     const classes = `${picture_classes || ''}`;
+    const imgStyles = default_size ? { width: default_size, height: default_size } : {};
 
-    const style: Styles = {
-        "--image-aspect-ratio": aspect_ratio,
-        "--image-aspect-ratio-lg": breakpoint_width === '768' ? aspect_ratio : aspect_ratio_mobile,
-        "--image-aspect-ratio-md": aspect_ratio_mobile
-    };
-
-    const PictureContent = () => (
-        <picture
-            className={classes}
-            style={style}
-        >
+    return (
+        <picture className={classes}>
             <source
                 srcSet={imgUrlSet}
                 media={`(min-width: ${breakpoint_width || '1024'}px)`}
@@ -104,22 +52,28 @@ const PictureImg: React.FC<PictureImgProps> = ({
                 className={img_classes || ''}
                 src={img?.src}
                 alt={alt || img.alt}
-                loading={lazy ? 'lazy' : 'eager'}
+                loading={is_swiper ? 'lazy' : (lazy ? 'lazy' : 'eager')}
+                style={imgStyles}
             />
         </picture>
     );
-
-    return (
-        lazy ? <LazyLoad>{PictureContent()}</LazyLoad> : PictureContent()
-    );
 };
 
-function generateImageURLSet(image: Image, widths: string): string {
+/**
+ * @function generateImageURLSet
+ * @description Generates a set of image URLs for different widths
+ * @param {Image | undefined} image - The image object containing the base src
+ * @param {string[] | undefined} widths - Array of widths for which to generate the URLs
+ * @returns {string} The image URLs set for the srcSet attribute
+ */
+function generateImageURLSet(image: Image | undefined, widths: string[] | undefined): string {
+    if (!image || !widths) {
+        return '';
+    }
+
     return widths
-        .split(", ")
         .map(width => `${image.src}?width=${width} ${width}w`)
         .join(", ");
 }
 
 export default PictureImg;
-

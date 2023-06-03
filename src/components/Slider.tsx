@@ -2,43 +2,33 @@ import React, { useEffect, useRef, useState } from 'react';
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import Icon from '../common/Icon.tsx';
+import { SliderProps } from '../types/Slider.types.ts';
 
-Swiper.use([Swiper,Navigation, Pagination, Autoplay, EffectFade]);
+Swiper.use([Navigation, Pagination, Autoplay, EffectFade]);
 
-
-interface SliderProps {
-    children: React.ReactNode[];
-    data_desktop_only?: boolean;
-    data_resize?: boolean;
-    data_minimum_length_lg?: number;
-    data_autoplay?: boolean;
-    data_loop?: boolean;
-    data_fade?: boolean;
-    data_free_mode?: boolean;
-    data_disable_slider?: boolean;
-    data_touch_start?: boolean;
-    data_speed?: number;
-    data_loop_delay?: number;
-    data_direction?: string;
-}
 /** 
-    <Slider data_desktop_only={true} data_resize={true} data_minimum_length_lg={2} data_autoplay={true} data_loop={true} data_fade={true} data_free_mode={true} data_disable_slider={false} data_touch_start={true} data_speed={700} data_loop_delay={3000} data_direction="horizontal">
-
-    @param {boolean} data_desktop_only - Only display the slider on desktop
-    @param {boolean} data_resize - Resize the slider on window resize
-    @param {number} data_minimum_length_lg - Minimum number of slides to display the slider on desktop
-    @param {boolean} data_autoplay - Enable autoplay
-    @param {boolean} data_loop - Enable loop
-    @param {boolean} data_fade - Enable fade effect
-    @param {boolean} data_free_mode - Enable free mode
-    @param {boolean} data_disable_slider - Disable slider
-    @param {boolean} data_touch_start - Enable touch start
-    @param {number} data_speed - Slider speed
-    @param {number} data_loop_delay - Slider loop delay
-    @param {string} data_direction - Slider direction
-
-    @return {React.FC} - Slider component
-**/
+ * A customizable slider component built with Swiper.
+ *
+ * @component
+ * @example
+ * <Slider
+ *   data_desktop_only={true}
+ *   data_resize={true}
+ *   data_minimum_length_lg={2}
+ *   data_autoplay={true}
+ *   data_loop={true}
+ *   data_fade={true}
+ *   data_free_mode={true}
+ *   data_disable_slider={false}
+ *   data_touch_start={true}
+ *   data_speed={700}
+ *   data_loop_delay={3000}
+ *   data_direction="horizontal"
+ * >
+ *   <div>Slide 1</div>
+ *   <div>Slide 2</div>
+ * </Slider>
+ */
 const Slider: React.FC<SliderProps> = ({
     children,
     data_desktop_only = false,
@@ -87,7 +77,9 @@ const Slider: React.FC<SliderProps> = ({
     }, [swiperRef, swiper, data_direction, data_speed, data_loop, data_fade]);
 
     return (
-        <div
+
+
+        <nav
             className="swiper-container swiper-container--visible overflow__content u-overflow-no-scrollbar"
             ref={swiperRef}
         >
@@ -111,7 +103,7 @@ const Slider: React.FC<SliderProps> = ({
                 </button>
             </>
             }
-        </div>
+        </nav>
     );
 };
 

@@ -23,11 +23,6 @@ const AboutMe: React.FC = () => {
                     width: 420,
                     height: 430,
                 }}
-                aspect_ratio="420/430"
-                aspect_ratio_mobile="420/430"
-                widths="420"
-                widths_mobile="420"
-                default_width="420"
                 breakpoint_width="420"
                 lazy={false}
                 img_classes="About__cv--image u-rounded-border"
