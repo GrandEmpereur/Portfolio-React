@@ -32,6 +32,7 @@ const MainContent: React.FC = () => {
 
 const App: React.FC = () => {
     const [isLoaded, setIsLoaded] = useState(false);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isFading, setIsFading] = useState(false);
 
     useEffect(() => {
