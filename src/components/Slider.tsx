@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
 import 'swiper/swiper-bundle.css';
 import Icon from '../common/Icon.tsx';
