@@ -1,4 +1,12 @@
+@import "../core";
+
 .timeline {
+    @include media-breakpoint-down(lg) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include flex-gap(vertical, var(--space-xl));
+    }
     .timeline-section {
         position: relative;
 
@@ -7,25 +15,29 @@
             height: 100%;
             background-color: var(--color-white);
             position: absolute;
-            left: 0;
+            left: 10px;
             top: 0;
+
+            @include media-breakpoint-down(lg) {
+                left: 10px;
+            }
         }
     }
 
     .timeline-item {
-        margin-left: 35px;
+        margin-left: var(--space-xl);
         width: 34.688rem;
+
+        @include media-breakpoint-down(lg) {
+            width: 90%;
+        }
 
         .timeline-item__date {
             position: relative;
 
             .line {
-                width: 3px;
-                height: 100%;
-                background-color: var(--color-white);
-                position: absolute;
-                left: -35px;
-                top: 0;
+                width: 0;
+                height: 0;
 
                 &::before {
                     content: "";
@@ -35,7 +47,7 @@
                     border-radius: 50%;
                     position: absolute;
                     top: -4px;
-                    left: -9px;
+                    left: -45px;
                 }
             }
         }
