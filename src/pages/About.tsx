@@ -1,5 +1,4 @@
 import React from "react";
-import "../scss/sections/hero.scss";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
 import Timeline from "../components/Timeline.tsx";
