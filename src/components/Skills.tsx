@@ -94,7 +94,8 @@ const Skills: React.FC = () => {
                         }}
                         default_size="420/430"
                         breakpoint_width="1024"
-                        picture_classes="section-skills__image u-rounded-border"
+                        picture_classes="section-skills__image"
+                        img_classes="u-rounded-border"
                     />
                 </div>
                 <div className="skills-accordion u-full-width">

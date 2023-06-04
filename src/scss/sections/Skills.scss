@@ -1,16 +1,30 @@
 @import "../core";
 
 .section-skills {
+    @include media-breakpoint-down(lg) {
+        .skills-wrapper {
+            flex-direction: column;
+        }
+
+        .skills-accordion{
+            padding-top: var(--space-2xl);
+        }
+    }
+
     &__image {
-        width: 26.25rem;
-        height: 26.875rem;
         filter: drop-shadow(40px 40px 10px rgba(0, 0, 0, 0.25));
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+    }
+
+    @include media-breakpoint-down(md) {
+        &__image {
+            width: 320px !important;
+            height: 330px !important;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        .skills-accordion{
+            text-align: center;
         }
     }
 

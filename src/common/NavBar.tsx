@@ -22,10 +22,8 @@ const NavBar: React.FC = () => {
                             width: 30,
                             height: 30,
                         }}
-                        widths="420, 768, 1024"
-                        widths_mobile="320, 480, 640"
-                        default_width="420"
-                        breakpoint_width="768"
+                        default_size="30/30"
+                        breakpoint_width="1024"
                     />
                 </Link>
             </div>
