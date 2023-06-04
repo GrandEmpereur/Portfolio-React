@@ -1,5 +1,5 @@
 import React from "react";
-import PictureImg from "./PictureImg.tsx";
+import PictureImg from "./PictureImg";
 import "../scss/sections/About.scss";
 
 const AboutMe: React.FC = () => {
@@ -20,10 +20,11 @@ const AboutMe: React.FC = () => {
                 imgMobile={{
                     src: "/images/cv.jpg",
                     alt: "cv",
-                    width: 420,
-                    height: 430,
+                    width: 320,
+                    height: 330,
                 }}
-                breakpoint_width="420"
+                breakpoint_width="1024"
+                default_size="420/430"
                 lazy={false}
                 img_classes="About__cv--image u-rounded-border"
                 picture_classes="About__cv--picture u-flex"

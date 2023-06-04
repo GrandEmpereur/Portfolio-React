@@ -3,9 +3,9 @@
  */
 
 import React from "react";
-import Icon from "../common/Icon.tsx";
-import '../scss/sections/Timeline.scss';
+import Icon from "../common/Icon";
 import { TimelineItemProps, TimelineProps } from "../types/Timeline.types.ts";
+import '../scss/sections/Timeline.scss';
 
 /**
  * @function TimelineItem

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PictureImg from "./PictureImg.tsx";
+import PictureImg from "./PictureImg";
 import "../scss/sections/Skills.scss";
-import Icon from "../common/Icon.tsx";
+import Icon from "../common/Icon";
 
 interface AccordionProps {
     title: string;
@@ -94,7 +94,8 @@ const Skills: React.FC = () => {
                         }}
                         default_size="420/430"
                         breakpoint_width="1024"
-                        picture_classes="section-skills__image u-rounded-border"
+                        picture_classes="section-skills__image"
+                        img_classes="u-rounded-border"
                     />
                 </div>
                 <div className="skills-accordion u-full-width">

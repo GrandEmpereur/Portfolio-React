@@ -9,6 +9,10 @@ import PageTransition from "../common/PageTransition";
 import AboutPage from "./About";
 import Project from "./Project";
 
+/**
+ * MainContent is a React component that contains all the routes and the NavBar.
+ * It also conditionally renders the Footer depending on the current route.
+ */
 const MainContent: React.FC = () => {
     const location = useLocation();
 
@@ -30,18 +34,24 @@ const MainContent: React.FC = () => {
     );
 };
 
+/**
+ * App is the main React component.
+ * It sets the window height CSS variable and starts the preloader animation.
+ * Once the preloader animation is complete, it renders the MainContent component.
+ */
 const App: React.FC = () => {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [isFading, setIsFading] = useState(false);
 
     useEffect(() => {
+        /**
+         * Sets the CSS variable for the window height to the actual window height.
+         */
         const setVhProperty = () => {
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty("--window-inner-height", `${vh}px`);
         };
 
         const timer = setTimeout(() => {
-            setIsFading(true);
             setTimeout(() => setIsLoaded(true), 1000);
         }, 5000);
 

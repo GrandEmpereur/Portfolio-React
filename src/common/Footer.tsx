@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import PictureImg from "../components/PictureImg.tsx";
+import PictureImg from "../components/PictureImg";
 import "../scss/sections/Footer.scss";
-import Icon from "./Icon.tsx";
+import Icon from "./Icon";
 
 const Footer: React.FC = () => {
 
@@ -10,17 +10,21 @@ const Footer: React.FC = () => {
         <footer className="footer page-width-large page-width-mobile u-flex align-items-center justify-content-between">
             <div className="footer__logo">
                 <Link to="/">
-                    <PictureImg
-                        mainImg={{
-                            url: () => "./images/preloader.png",
-                            alt: "Preloader",
+                <PictureImg
+                        img={{
+                            src: "./images/logo.png",
+                            alt: "Logo",
+                            width: 30,
+                            height: 30,
                         }}
-                        mobileImg={{
-                            url: () => "./images/preloader.png",
-                            alt: "Preloader",
+                        imgMobile={{
+                            src: "./images/logo.png",
+                            alt: "Logo",
+                            width: 30,
+                            height: 30,
                         }}
-                        alt="Logo"
-                        pictureClasses="nav__logo"
+                        default_size="30/30"
+                        breakpoint_width="1024"
                     />
                 </Link>
             </div>

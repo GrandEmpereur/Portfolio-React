@@ -85,10 +85,7 @@ const Project: React.FC = () => {
                             <PictureImg
                                 img={image.img}
                                 imgMobile={image.imgMobile}
-                                widths="420, 768, 1024"
-                                widths_mobile="320, 480, 640"
-                                aspect_ratio="420/430"
-                                default_width="420"
+                                default_size="420/430"
                                 breakpoint_width="768"
                                 picture_classes="Project__image u-rounded-border"
                             />

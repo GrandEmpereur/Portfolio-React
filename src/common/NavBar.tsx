@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PictureImg from "../components/PictureImg.tsx";
-import "../scss/sections/NavBar.scss";
-import Icon from "./Icon.tsx";
+import PictureImg from "../components/PictureImg";
+import "../scss/sections/Navbar.scss";
+import Icon from "./Icon";
 
 const NavBar: React.FC = () => {
     return (
@@ -22,10 +22,8 @@ const NavBar: React.FC = () => {
                             width: 30,
                             height: 30,
                         }}
-                        widths="420, 768, 1024"
-                        widths_mobile="320, 480, 640"
-                        default_width="420"
-                        breakpoint_width="768"
+                        default_size="30/30"
+                        breakpoint_width="1024"
                     />
                 </Link>
             </div>

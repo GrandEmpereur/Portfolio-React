@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "../common/Icon.tsx";
-import "../scss/sections/hero.scss";
+import Icon from "../common/Icon";
+import "../scss/sections/Hero.scss";
 import Card from "../components/Card";
 
 const Hero: React.FC = () => {
