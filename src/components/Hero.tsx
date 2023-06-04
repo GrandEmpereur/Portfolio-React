@@ -45,13 +45,6 @@ const Hero: React.FC = () => {
                 <Card
                     img={image}
                     imgMobile={image}
-                    title="vv"
-                    urlLabel="vv"
-                    link="vv"
-                    textColor="#fff"
-                    hn="h2"
-                    className="ccc"
-                    pushBackgroundColor="#fff"
                     default_size="420/430"
                     breakpoint_width="1024"
                     is_swiper={false}

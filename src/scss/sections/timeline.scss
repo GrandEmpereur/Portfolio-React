@@ -1,0 +1,43 @@
+.timeline {
+    .timeline-section {
+        position: relative;
+
+        .line {
+            width: 3px;
+            height: 100%;
+            background-color: var(--color-white);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .timeline-item {
+        margin-left: 35px;
+        width: 34.688rem;
+
+        .timeline-item__date {
+            position: relative;
+
+            .line {
+                width: 3px;
+                height: 100%;
+                background-color: var(--color-white);
+                position: absolute;
+                left: -35px;
+                top: 0;
+
+                &::before {
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    background-color: var(--color-white);
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -4px;
+                    left: -9px;
+                }
+            }
+        }
+    }
+}
