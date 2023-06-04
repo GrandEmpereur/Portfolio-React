@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import "../scss/sections/hero.scss";
+import "../scss/sections/Hero.scss";
 import "../scss/templates/Home.scss";
 
 const Home: React.FC = () => {
