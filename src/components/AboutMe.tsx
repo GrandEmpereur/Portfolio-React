@@ -1,5 +1,5 @@
 import React from "react";
-import PictureImg from "./PictureImg.tsx";
+import PictureImg from "./PictureImg";
 import "../scss/sections/About.scss";
 
 const AboutMe: React.FC = () => {

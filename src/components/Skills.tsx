@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PictureImg from "./PictureImg.tsx";
+import PictureImg from "./PictureImg";
 import "../scss/sections/Skills.scss";
-import Icon from "../common/Icon.tsx";
+import Icon from "../common/Icon";
 
 interface AccordionProps {
     title: string;

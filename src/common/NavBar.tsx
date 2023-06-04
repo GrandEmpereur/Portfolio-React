@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PictureImg from "../components/PictureImg.tsx";
+import PictureImg from "../components/PictureImg";
 import "../scss/sections/Navbar.scss";
-import Icon from "./Icon.tsx";
+import Icon from "./Icon";
 
 const NavBar: React.FC = () => {
     return (

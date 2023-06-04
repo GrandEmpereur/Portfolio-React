@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 //@ts-ignore
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade } from 'swiper';
 import 'swiper/swiper-bundle.css';
-import Icon from '../common/Icon.tsx';
+import Icon from '../common/Icon';
 import { SliderProps } from '../types/Slider.types.ts';
 
 Swiper.use([Navigation, Pagination, Autoplay, EffectFade]);

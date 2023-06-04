@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../common/Icon.tsx";
+import Icon from "../common/Icon";
 import "../scss/sections/Hero.scss";
 import Card from "../components/Card";
 

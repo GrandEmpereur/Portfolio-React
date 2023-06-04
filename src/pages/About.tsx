@@ -1,7 +1,7 @@
 import React from "react";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
-import Timeline from "../components/Timeline.tsx";
+import Timeline from "../components/Timeline";
 
 const About: React.FC = () => {
     return <div className="About ">

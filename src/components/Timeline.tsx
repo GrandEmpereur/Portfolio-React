@@ -3,7 +3,7 @@
  */
 
 import React from "react";
-import Icon from "../common/Icon.tsx";
+import Icon from "../common/Icon";
 import '../scss/sections/Timeline.scss';
 import { TimelineItemProps, TimelineProps } from "../types/Timeline.types.ts";
 
