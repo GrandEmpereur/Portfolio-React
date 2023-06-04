@@ -31,16 +31,16 @@ Swiper.use([Navigation, Pagination, Autoplay, EffectFade]);
  */
 const Slider: React.FC<SliderProps> = ({
     children,
-    data_resize = false,
+    // data_resize = false,
     data_minimum_length_lg = 1,
-    data_autoplay = false,
+    // data_autoplay = false,
     data_loop = false,
     data_fade = false,
-    data_free_mode = false,
-    data_disable_slider = false,
-    data_touch_start = false,
+    // data_free_mode = false,
+    // data_disable_slider = false,
+    // data_touch_start = false,
     data_speed = 700,
-    data_loop_delay = 3000,
+    // data_loop_delay = 3000,
     data_direction = 'horizontal',
 }) => {
     const swiperRef = useRef(null);
