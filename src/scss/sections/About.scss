@@ -1,0 +1,131 @@
+@import "../core";
+
+.About{
+    &__title {
+        p{
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 400px;
+                display: block;
+                width: 50px;
+                height: 2px;
+                background-color: var(--color-white);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 400px;
+                display: block;
+                width: 50px;
+                height: 2px;
+                background-color: var(--color-white);
+            }
+
+            @include media-breakpoint-down(lg) {
+                &::after {
+                    left: 70%;
+                }
+
+                &::before {
+                    right: 70%;
+                }
+            }
+
+            @include media-breakpoint-down(md) {
+                &::after {
+                    left: 82%;
+                }
+
+                &::before {
+                    right: 82%;
+                }
+            }
+        }
+    }
+
+    &__objectif {
+        @include media-breakpoint-down(md) {
+            flex-direction: column;
+            text-align: center;
+            @include flex-gap(vertical, var(--space-xl));
+            &--left {
+                width: 100%;
+            }
+        }
+    }
+
+    &__cv{
+        &--picture {
+            position: relative;
+            width: 420px;
+            height: 430px;
+            z-index: -1;
+            box-shadow: 50px 50px 10px rgb(0, 0, 0.25);
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50px;
+                left: 50px;
+                width: 100%;
+                height: 100%;
+                border: 10px solid var(--color-gold);
+                z-index: 1;
+            }
+        }
+
+        &--image {
+            position: relative;
+            z-index: 2;
+            
+        }
+
+        &--content {
+            width: 60%;
+        }
+
+        @include media-breakpoint-down(lg) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &--picture {
+                width: 300px;
+                height: 300px;
+                margin-bottom: var(--space-xl);
+
+                &::before {
+                    all: unset;
+                }
+            }
+
+            &--content {
+                width: 90%;
+                padding-top: var(--space-xl);
+            }
+        }
+
+        @include media-breakpoint-down(md) {
+            &--picture {
+                width: 200px;
+                height: 200px;
+            }
+
+            &--content {
+                > div{
+                    > div {
+                        flex-direction: column;
+                        @include flex-gap(vertical, var(--space-xl));
+                        text-align: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}

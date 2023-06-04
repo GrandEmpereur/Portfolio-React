@@ -1,0 +1,158 @@
+@import "../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Slider CSS
+// ---------------------------------------------------------------------------------------------------------------------
+
+.slider-button {
+    &--round {
+        height: 50px;
+        width: 50px;
+        background: var(--color-lotion);
+        border-radius: 50%;
+    }
+
+    &--round__alt {
+        height: 66px;
+        width: 66px;
+        background: rgba(217, 217, 217, 0.3);
+        backdrop-filter: blur(7px);
+        border-radius: 50%;
+
+        &:hover {
+            // un bg plus foncé
+            background: rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease-in-out;
+        }
+    }
+}
+
+// reset style properties in desktop if slider if mobile only
+.js-slider--mobile {
+    @include media-breakpoint-up(lg) {
+        &.swiper-container {
+            margin-left: unset;
+            margin-right: unset;
+            overflow: unset;
+            padding: unset;
+            z-index: unset;
+        }
+
+        .swiper-wrapper {
+            width: unset;
+            height: unset;
+            z-index: unset;
+            display: block;
+        }
+
+        .swiper-slide {
+            flex-shrink: unset;
+            width: unset;
+            height: unset;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Swiper default CSS - override but don't change
+// ---------------------------------------------------------------------------------------------------------------------
+
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+
+    &--visible {
+        overflow: unset;
+    }
+
+    &:not([data-desktop-only]) {
+        &.swiper-horizontal {
+            touch-action: pan-y;
+        }
+    }
+
+    &[data-desktop-only] {
+        &.swiper-horizontal {
+            @include media-breakpoint-up(lg) {
+                touch-action: pan-y;
+            }
+        }
+    }
+
+    // Adding padding to container to allow for space for the overflowing images
+    padding-left: 20%; // Adjust this value to change how much the first and last images overflow
+    padding-right: 20%; // Adjust this value to change how much the first and last images overflow
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        flex: 0 0 20%;
+    }
+
+}
+
+.swiper-container-pointer-events {
+    touch-action: pan-y;
+
+    &[data-direction="vertical"] {
+        touch-action: pan-x;
+    }
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    will-change: transform;
+    box-sizing: content-box;
+
+    .swiper-container[data-direction="vertical"] & {
+        flex-direction: column;
+        // height: auto;
+    }
+
+    gap: 120px;
+}
+
+.swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    will-change: transform;
+}
+
+.swiper-fade .swiper-slide {
+    transition-property: opacity;
+    will-change: opacity;
+    pointer-events: none;
+
+    &.swiper-slide-active {
+        pointer-events: initial;
+    }
+}
+
+.swiper-button {
+    opacity: 1;
+    transition: opacity var(--global-ease) var(--globalTransitionSpeedLonger);
+}
+
+.swiper-button-disabled {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--global-ease) var(--globalTransitionSpeedLonger);
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+    display: none;
+}

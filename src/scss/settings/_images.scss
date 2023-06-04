@@ -1,0 +1,34 @@
+picture {
+    --image-aspect-ratio: unset;
+    height: 100%;
+    width: 100%;
+
+    img {
+        aspect-ratio: var(--image-aspect-ratio);
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        // IE11 polyfill https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/object-fit
+        font-family: "object-fit: cover";
+    }
+
+    &.lozad {
+        img {
+            opacity: 0;
+        }
+
+        &[data-loaded="true"] img {
+            opacity: 1;
+            transition: opacity .150s ease-in;
+        }
+    }
+
+    .swiper-lazy+img {
+        opacity: 0;
+    }
+
+    .swiper-lazy-loaded+img {
+        opacity: 1;
+        transition: opacity .150s ease-in;
+    }
+}

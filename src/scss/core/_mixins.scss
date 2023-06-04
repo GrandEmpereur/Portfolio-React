@@ -1,0 +1,160 @@
+@mixin aspect-ratio($width, $height) {
+    aspect-ratio: #{$width} / #{$height};
+
+    @supports not (aspect-ratio: auto) {
+        position: relative;
+
+        &::before {
+            display: block;
+            content: '';
+            width: 100%;
+            padding-top: calc(($height / $width) * 100%);
+        }
+
+        &> :first-child {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Fix gap for Safari under 14.1
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin flex-gap($orientation, $value) {
+    @supports (translate: none) {
+        @if $orientation ==horizontal {
+            column-gap: $value;
+        }
+
+        @else if $orientation ==vertical {
+            row-gap: $value;
+        }
+
+        @else {
+            gap: $value;
+        }
+    }
+
+    @supports not (translate: none) {
+        &>* {
+            @if $orientation ==horizontal {
+                margin-left: calc(#{$value} / 2);
+                margin-right: calc(#{$value} / 2);
+            }
+
+            @else if $orientation ==vertical {
+                margin-top: calc(#{$value} / 2);
+                margin-bottom: calc(#{$value} / 2);
+            }
+
+            @else {
+                margin: calc(#{$value} / 2);
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Breakpoints
+// ---------------------------------------------------------------------------------------------------------------------
+
+@mixin media-breakpoint-up($breakpoint) {
+    @if $breakpoint == xs {
+        @media (min-width: 0) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == sm {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == md {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == lg {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xl {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xxl {
+        @media (min-width: 1400px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xxxl {
+        @media (min-width: 1600px) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+    @if $breakpoint == xs {
+        @media (max-width: 575.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == sm {
+        @media (max-width: 767.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == md {
+        @media (max-width: 991.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == lg {
+        @media (max-width: 1199.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xl {
+        @media (max-width: 1399.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xxl {
+        @media (max-width: 1599.98px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == xxxl {
+        @media (max-width: 1799.98px) {
+            @content;
+        }
+    }
+}

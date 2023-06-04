@@ -1,0 +1,45 @@
+.icon {
+    &--xxs {
+        height: .68rem;
+        min-height: .68rem;
+        width: .68rem;
+        min-width: .68rem;
+    }
+
+    &--xs {
+        height: 0.875rem;
+        min-height: 0.875rem;
+        width: 0.875rem;
+        min-width: 0.875rem;
+    }
+
+    &--s {
+        height: 1rem;
+        min-height: 1rem;
+        width: 1rem;
+        min-width: 1rem;
+    }
+
+    &--m {
+        height: 1.625rem;
+        min-height: 1.625rem;
+        width: 1.625rem;
+        min-width: 1.625rem;
+    }
+
+    &--l {
+        height: 2.5rem;
+        min-height: 2.5rem;
+        width: 2.5rem;
+        min-width: 2.5rem;
+    }
+
+    &--xl {
+        height: 4.5rem;
+        min-height: 4.5rem;
+        width: 4.5rem;
+        min-width: 4.5rem;
+    }
+}
+
+

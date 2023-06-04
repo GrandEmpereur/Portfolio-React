@@ -1,0 +1,14 @@
+.hero {
+    &__title {
+        width: 32rem;
+    } 
+    &__subtitle {
+        width: 40rem;
+    }
+
+    &__logo {
+        width: 26.25rem;
+        height: 26.875rem;
+        filter: drop-shadow(40px 40px 10px rgba(0, 0, 0, 0.25));
+    }
+}
