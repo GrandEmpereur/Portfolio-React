@@ -30,73 +30,80 @@ const AboutMe: React.FC = () => {
             />
 
             <div className="About__cv--content u-flex justify-content-around align-items-center">
-                <div className="u-flex justify-content-between u-full-width">
-                    <div className="About__cv--content--left u-flex flex-column v-gap-xl">
-                        <div className="name u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Nom : </h3>
-                            <p className="h4 keep-size">Bartosik </p>
-                        </div>
-                        <div className="prénom u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Prénom : </h3>
-                            <p className="h4 keep-size">Patrick</p>
-                        </div>
-                        <div className="nationalité u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Nationalité : </h3>
-                            <p className="h4 keep-size">Française</p>
-                        </div>
-                        <div className="experience u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Expérience : </h3>
-                            <p className="h4 keep-size">4 an</p>
-                        </div>
-                        <div className="adresse u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Adresse : </h3>
-                            <p className="h4 keep-size">Paris / Bezier</p>
+                <div className="u-flex justify-content-between u-full-width flex-column">
+                    <div className="u-flex justify-content-between">
+                        <div className="About__cv--content--left u-flex flex-column v-gap-xl">
+                            <div className="name u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Nom : </h3>
+                                <p className="h4 keep-size">Bartosik </p>
+                            </div>
+                            <div className="prénom u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Prénom : </h3>
+                                <p className="h4 keep-size">Patrick</p>
+                            </div>
+                            <div className="nationalité u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Nationalité : </h3>
+                                <p className="h4 keep-size">Française</p>
+                            </div>
+                            <div className="experience u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Expérience : </h3>
+                                <p className="h4 keep-size">4 an</p>
+                            </div>
+                            <div className="adresse u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Adresse : </h3>
+                                <p className="h4 keep-size">Paris / Bezier</p>
+                            </div>
+
+                            <div className="About__cv--content--left--btn u-pad-t-xl u-none--lg">
+                                <a href="./pdf/Cv.pdf" download>
+                                    <button className="button button--primary">Télécharger mon CV</button>
+                                </a>
+                            </div>
                         </div>
 
-                        <div className="About__cv--content--left--btn u-pad-t-xl">
-                            <a href="./pdf/Cv.pdf" download>
-                                <button className="button button--primary">Télécharger mon CV</button>
-                            </a>
+                        <div className="About__cv--content--right u-flex flex-column v-gap-xl">
+                            <div className="freelance u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Freelance : </h3>
+                                <p className="h4 keep-size">Disponible / soire et week-end</p>
+                            </div>
+                            <div className="langue u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Langue : </h3>
+                                <p className="h4 keep-size">Français / Anglais / Polonais</p>
+                            </div>
+                            <div className="email u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Email : </h3>
+                                <p className="h4 keep-size">
+                                    <a href="mailto: bartosikpatrickpro@gmail.com" className="u-white u-underline--hover">
+                                        BartosikPatrickPro@gmail.com
+                                    </a>
+                                </p>
+                            </div>
+                            <div className="discord u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Discord : </h3>
+                                <p className="h4 keep-size">Grand Empereur#2749</p>
+                            </div>
+                            <div className="LinkedIn u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Linkedin : </h3>
+                                <p className="h4 keep-size">
+                                    <a href="https://www.linkedin.com/in/patrick-bartosik/" className="u-white u-underline--hover">
+                                        LinkedIn
+                                    </a>
+                                </p>
+                            </div>
+                            <div className="github u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Github : </h3>
+                                <p className="h4 keep-size">
+                                    <a href="" className="u-white u-underline--hover">
+                                        Github
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="About__cv--content--right u-flex flex-column v-gap-xl">
-                        <div className="freelance u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Freelance : </h3>
-                            <p className="h4 keep-size">Disponible / soire et week-end</p>
-                        </div>
-                        <div className="langue u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Langue : </h3>
-                            <p className="h4 keep-size">Français / Anglais / Polonais</p>
-                        </div>
-                        <div className="email u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Email : </h3>
-                            <p className="h4 keep-size">
-                                <a href="mailto: bartosikpatrickpro@gmail.com" className="u-white u-underline--hover">
-                                    BartosikPatrickPro@gmail.com
-                                </a>
-                            </p>
-                        </div>
-                        <div className="discord u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Discord : </h3>
-                            <p className="h4 keep-size">Grand Empereur#2749</p>
-                        </div>
-                        <div className="LinkedIn u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Linkedin : </h3>
-                            <p className="h4 keep-size">
-                                <a href="https://www.linkedin.com/in/patrick-bartosik/" className="u-white u-underline--hover">
-                                    LinkedIn
-                                </a>
-                            </p>
-                        </div>
-                        <div className="github u-flex h-gap-m">
-                            <h3 className="h4 keep-size">Github : </h3>
-                            <p className="h4 keep-size">
-                                <a href="" className="u-white u-underline--hover">
-                                    Github
-                                </a>
-                            </p>
-                        </div>
+                    <div className="About__cv--content--left--btn u-pad-t-xl u-none u-block--lg u-center">
+                        <a href="./pdf/Cv.pdf" download>
+                            <button className="button button--primary">Télécharger mon CV</button>
+                        </a>
                     </div>
                 </div>
             </div>
