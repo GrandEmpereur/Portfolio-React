@@ -28,20 +28,15 @@ const Footer: React.FC = () => {
                     />
                 </Link>
             </div>
-            <div className="footer__center u-flex justify-content-center align-items-center h-gap-xl">
-                <Link to="/projects" className="nav-bar__projects u-gray">Politique de confidentialité</Link>
-                <Link to="/projects" className="nav-bar__projects u-gray">Mention Légales</Link>
-                <Link to="/projects" className="nav-bar__projects u-gray">CGU</Link>
-            </div>
             <div className="footer__socialMedia u-flex h-gap-l align-items-center">
                 <a href="https://github.com/GrandEmpereur" target="_blank" className="u-flex align-items-center">
-                    <Icon symbolId="icon-github" size={32}/>
+                    <Icon symbolId="icon-github" size={24}/>
                 </a>
                 <a href="" target="_blank" className="u-flex align-items-center">
-                    <Icon symbolId="icon-linkedin" size={32}/>
+                    <Icon symbolId="icon-linkedin" size={24}/>
                 </a>
                 <a href="" target="_blank" className="u-flex align-items-center">
-                    <Icon symbolId="icon-instagram" size={32}/>
+                    <Icon symbolId="icon-instagram" size={24}/>
                 </a>
             </div>
         </footer>
