@@ -52,7 +52,7 @@ const App: React.FC = () => {
         };
 
         const timer = setTimeout(() => {
-            setTimeout(() => setIsLoaded(false), 1000);
+            setTimeout(() => setIsLoaded(true), 1000);
         }, 5000);
 
         setVhProperty();
