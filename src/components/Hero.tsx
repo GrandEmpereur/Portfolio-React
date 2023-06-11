@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../common/Icon";
 import "../scss/sections/Hero.scss";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
 
 const Hero: React.FC = () => {
     const image = {
@@ -24,11 +25,11 @@ const Hero: React.FC = () => {
                     Passionné par le monde médiéval, je crée des expériences web uniques en combinant mes compétences en développement full stack et en design. Découvrez comment je peux vous aider à transformer vos idées en réalités numériques.
                 </p>
 
-                <div className="u-flex h-gap-2xl u-pad-t-m">
-                    <button className="button button--primary button-rounded">Contactez Moi</button>
-                    <button className="button button--primary button-rounded">Mes projets</button>
+                <div className="hero__button u-flex h-gap-2xl u-pad-t-m">
+                    <Link to="/services" className="button button--primary button-rounded">Mes projets</Link>
+                    <Link to="/contact" className="button button--primary button-rounded">Contactez Moi</Link>
                 </div>
-                <div className="u-flex h-gap-l">
+                <div className="hero__icons u-flex h-gap-l">
                     <a href="">
                         <Icon symbolId="icon-github" className="custom-icon" />
                     </a>

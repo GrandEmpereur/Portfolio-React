@@ -9,7 +9,7 @@ const AboutMe: React.FC = () => {
             <p className="h4 u-gold keep-size">Développeur web full-stack</p>
         </div>
 
-        <div className="About__cv u-flex justify-content-between">
+        <div className="About__cv u-flex justify-content-around">
             <PictureImg
                 img={{
                     src: "/images/cv.jpg",

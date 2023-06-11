@@ -42,7 +42,7 @@ const Timeline: React.FC<TimelineProps> = ({ experience, formation }) => {
     // Render a timeline, which includes sections for both experience and education.
     return (
         <section className="react-component section-timeline page-width-large page-width-mobile">
-            <div className="timeline u-flex justify-content-between">
+            <div className="timeline u-flex justify-content-around">
                 <div className="u-flex flex-column v-gap-xl">
                     <span className="h3 keep-size">Experience</span>
                     <div className="timeline-section u-flex flex-column v-gap-xl">
