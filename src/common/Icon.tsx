@@ -8,6 +8,7 @@ export interface IconProps {
     size?: number;
     fill?: string;
     stroke?: string;
+    onClick?: () => void;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -17,6 +18,7 @@ const Icon: React.FC<IconProps> = ({
     size = 32,
     fill = 'none',
     stroke = 'currentColor',
+    onClick,
 }) => {
     const formatName = (iconName: string): keyof typeof Icons => {
         const formattedName = iconName.split('-')
@@ -28,7 +30,7 @@ const Icon: React.FC<IconProps> = ({
     if (name) {
         const formattedName = formatName(name);
         const IconComponent = Icons[formattedName];
-        return <IconComponent className={className} />;
+        return <IconComponent className={className} onClick={onClick} />;
     } else if (symbolId) {
         return (
             <svg
@@ -37,6 +39,7 @@ const Icon: React.FC<IconProps> = ({
                 fill={fill}
                 stroke={stroke}
                 className={`icon icon-${symbolId} ${className}`}
+                onClick={onClick}
             >
                 <use href={`#${symbolId}`} />
             </svg>
