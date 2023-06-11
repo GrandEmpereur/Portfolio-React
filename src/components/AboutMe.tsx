@@ -30,9 +30,9 @@ const AboutMe: React.FC = () => {
                 picture_classes="About__cv--picture u-flex"
             />
 
-            <div className="About__cv--content u-flex justify-content-around align-items-center">
-                <div className="u-flex justify-content-between u-full-width flex-column">
-                    <div className="u-flex justify-content-between">
+            <div className="About__cv--content u-flex align-items-center">
+                <div className="u-flex u-full-width flex-column">
+                    <div className="u-flex justify-content-around">
                         <div className="About__cv--content--left u-flex flex-column v-gap-xl">
                             <div className="name u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Nom : </h3>
