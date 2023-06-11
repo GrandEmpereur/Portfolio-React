@@ -117,43 +117,43 @@
 
 @mixin media-breakpoint-down($breakpoint) {
     @if $breakpoint == xs {
-        @media (max-width: 349px) {
+        @media (max-width: 349.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == sm {
-        @media (max-width: 519px) {
+        @media (max-width: 519.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == md {
-        @media (max-width: 767px) {
+        @media (max-width: 767.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == lg {
-        @media (max-width: 1023px) {
+        @media (max-width: 1023.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == xl {
-        @media (max-width: 1199px) {
+        @media (max-width: 1199.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == xxl {
-        @media (max-width: 1439px) {
+        @media (max-width: 1439.98px) {
             @content;
         }
     }
 
     @else if $breakpoint == xxxl {
-        @media (max-width: 1799px) {
+        @media (max-width: 1799.98px) {
             @content;
         }
     }

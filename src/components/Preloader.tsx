@@ -31,7 +31,7 @@ const Preloader: React.FC<PreloaderProps> = ({ style, logo }) => {
     }, [count]);
 
     return (
-        <div className="preloader page-width-large page-width-mobile u-relative u-full-vp-wh" style={style}>
+        <div className="preloader u-relative u-full-vp-wh" style={style}>
             <p className="preloader__counter h1 u-gold u-pad-t-xl keep-size">{count}</p>
             <div className="preloader__animation ">
                 <PictureImg
