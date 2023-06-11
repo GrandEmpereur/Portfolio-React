@@ -42,6 +42,13 @@
         .accordion+.accordion {
             margin-top: 2rem;
         }
+
+        &-item {
+            .skill-logo {
+                width: 24px;
+                height: 24px;
+            }
+        }
     }
 
     &__title {
