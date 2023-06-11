@@ -37,42 +37,33 @@ html {
     /* Pour Internet Explorer et Edge */
 }
 
-html::-webkit-scrollbar {
-    display: none;
-    /* Pour les navigateurs basés sur WebKit (Chrome, Safari, etc.) */
+/* Custom scrollbar */
+/* C'est pour Chrome, Safari et Opera */
+::-webkit-scrollbar {
+    width: 5px;
 }
 
-/* Pour supprimer la barre de défilement sur un élément spécifique */
-.custom-scroll-element {
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.custom-scroll-element::-webkit-scrollbar {
-    display: none;
+::-webkit-scrollbar-thumb {
+    background: var(--color-gold);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+}
+
+html {
+    scrollbar-color: var(--color-gold) transparent; // Première couleur pour le thumb, deuxième pour la track
+    scrollbar-width: thin;
 }
 
 html,
 body {
     position: relative;
-
-    /* Track */
-    &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px var(--color-gray-black);
-        border-radius: 10px;
-    }
-
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-        background: var(--color-gray-black);
-        border-radius: 10px;
-    }
-
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-        background: black;
-    }
 }
 
 html {
