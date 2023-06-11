@@ -69,8 +69,9 @@ const Skills: React.FC = () => {
             title: "Autre compétences",
             items: [
                 { skill: 'Vitest', logo: './images/icon/Vitest.svg' },
+                { skill: 'Jest', logo: './images/icon/Jest.svg' },
                 { skill: 'Code Review', logo: './images/icon/Git.svg' },
-                { skill: 'Clean Code', logo: './images/icon/CleanCode.svg' },
+                { skill: 'Clean Code', logo: './images/icon/CleanCode.png' },
             ]
         },
     ];
