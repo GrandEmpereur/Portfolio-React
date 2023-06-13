@@ -4,10 +4,11 @@ import Preloader from "../components/Preloader";
 import Footer from "../common/Footer";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
-import "../scss/templates/App.scss";
-import PageTransition from "../common/PageTransition";
 import AboutPage from "./About";
 import Project from "./Project";
+import Contact from "../components/Contact.tsx";
+import PageTransition from "../common/PageTransition";
+import "../scss/templates/App.scss";
 
 /**
  * MainContent is a React component that contains all the routes and the NavBar.
@@ -25,7 +26,7 @@ const MainContent: React.FC = () => {
                         <Route path="/" element={<Home />} />
                         <Route path="/projects" element={<Project />} />
                         <Route path="/about" element={<AboutPage />} />
-                        <Route path="/contact" element={<Home />} />
+                        <Route path="/contact" element={<Contact />} />
                     </Routes>
                 </PageTransition>
             </main>
