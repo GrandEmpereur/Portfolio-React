@@ -14,10 +14,10 @@ const Home: React.FC = () => {
 
     return <div className="Home page-width-large page-width-mobile u-flex align-items-center justify-content-around u-full-width">
         <div className="Home__content u-flex flex-column v-gap-l">
-            <span className="Home__preTitle h4 u-gold">portfolio</span>
+            <span className="Home__preTitle h4 u-gold">Portfolio</span>
 
             <span className="Home__title h2">
-                Hey ! Je m'appelle Patrick, je suis Developer Full Stack
+                Hey ! Je m'appelle Patrick, je suis Developer Full Stack orienter Javascript
             </span>
 
             <p className="Home__subtitle u-gray">

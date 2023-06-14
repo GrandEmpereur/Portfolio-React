@@ -15,7 +15,7 @@ const About: React.FC = () => {
                 },{
                     date: '2021 - 2022',
                     title: 'Interim - StaffMe',
-                    description: 'En tant intérimaire j\'ai effectué plusieurs missions dans le domaine de la logistique, de la vente et de la restauration. Afin de financer mes études mais aussi pour acquérir de l\'expérience dans le monde du travail. '
+                    description: 'En tant qu\'intérimaire j\'ai effectué plusieurs missions dans le domaine de la logistique, de la vente et de la restauration. Afin de financer mes études mais aussi pour acquérir de l\'expérience dans le monde du travail. '
                 },{
                     date: '2021 - 2022',
                     title: 'Projet Ecole - BAP ( Bourse aux projets ) - Développeur Frontend',
