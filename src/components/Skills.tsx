@@ -66,7 +66,7 @@ const Skills: React.FC = () => {
             ]
         },
         {
-            title: "Autre compétences",
+            title: "Autres compétences",
             items: [
                 { skill: 'Vitest', logo: './images/icon/Vitest.svg' },
                 { skill: 'Jest', logo: './images/icon/Jest.svg' },
@@ -77,8 +77,8 @@ const Skills: React.FC = () => {
     ];
 
     return (
-        <section className="react-component section-skills page-width-large page-width-mobile">
-            <div className="skills-wrapper u-flex  h-gap-4xl align-items-center">
+        <section className="react-component section-skills page-width-large page-width-mobile u-pad-b-2xl">
+            <div className="skills-wrapper u-flex  h-gap-4xl align-items-center ">
                 <div className="skills-image u-flex">
                     <PictureImg
                         img={{

@@ -48,7 +48,7 @@ const AboutMe: React.FC = () => {
                             </div>
                             <div className="experience u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Expérience : </h3>
-                                <p className="h4 keep-size">4 an</p>
+                                <p className="h4 keep-size">4 ans</p>
                             </div>
                             <div className="adresse u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Adresse : </h3>
@@ -69,11 +69,11 @@ const AboutMe: React.FC = () => {
                         <div className="About__cv--content--right u-flex flex-column v-gap-xl">
                             <div className="freelance u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Freelance : </h3>
-                                <p className="h4 keep-size">Disponible | soire et week-end</p>
+                                <p className="h4 keep-size">Disponible | soirée et week-end</p>
                             </div>
                             <div className="langue u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Langue : </h3>
-                                <p className="h4 keep-size">Français / Anglais / Polonais</p>
+                                <p className="h4 keep-size">Français | Anglais | Polonais</p>
                             </div>
                             <div className="email u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Email : </h3>
@@ -85,7 +85,7 @@ const AboutMe: React.FC = () => {
                             </div>
                             <div className="discord u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Discord : </h3>
-                                <p className="h4 keep-size">Grand Empereur#2749</p>
+                                <p className="h4 keep-size">grandempereur</p>
                             </div>
                             <div className="LinkedIn u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Linkedin : </h3>
@@ -126,11 +126,11 @@ const AboutMe: React.FC = () => {
                     <p>Je suis à la recherche d'une alternance de deux ans en tant que développeur full-stack, avec une préférence pour le développement back-end. Que ce soit au sein d'une entreprise ou d'une agence web, toutes les propositions sont les bienvenues. Par ailleurs, étant également freelance à temps partiel, je suis ouvert à divers projets que vous auriez.</p>
                 </div>
                 <div className="u-flex flex-column v-gap-m">
-                    <h3 className="h4 keep-size">Mes Étude</h3>
-                    <p>Je suis actuellement en troisième année de "Coding & digital innovation " à l'IIM. J'ai choisi continuée en mastère IWM (Ingénierie web et mobile ) afin d’approfondir encores plus mes competence technique. En plus de mes compétences en programmation, j'ai également développé des talents en design graphique.</p>
+                    <h3 className="h4 keep-size">Mes Études</h3>
+                    <p>Je suis actuellement en troisième année de "Coding & digital innovation " à l'IIM. J'ai choisi continuer en mastère IWM (Ingénierie web et mobile ) afin d’approfondir encore plus mes competences techniques. En plus de mes compétences en programmation, j'ai également développé des talents en design graphique.</p>
                 </div>
                 <div className="u-flex flex-column v-gap-m">
-                    <h3 className="h4 keep-size">Mes Expériences précédente</h3>
+                    <h3 className="h4 keep-size">Mes Expériences précédentes</h3>
                     <p>J'ai réalisé un stage et je suis actuellement en alternance au sein de l'agence web W3lead. Parallèlement à cela, j'ai également travaillé sur plusieurs projets personnels pour approfondir mes compétences et stimuler ma créativité.</p>
                 </div>
             </div>

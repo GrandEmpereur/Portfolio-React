@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
                             className="u-gold u-underline--hover "
                             onClick={toggleCloseMenu}
                         >
-                            À props
+                            À propos de moi
                         </Link>
                         {/* <Link
                             to="/projects"
@@ -63,13 +63,13 @@ const NavBar: React.FC = () => {
                         >
                             Projects
                         </Link> */}
-                        <Link
+                        {/* <Link
                             to="/services"
                             className="u-gold"
                             onClick={toggleCloseMenu}
                         >
                             Services
-                        </Link>
+                        </Link> */}
                         <Link
                             to="/contact"
                             className="u-gold"
@@ -89,7 +89,7 @@ const NavBar: React.FC = () => {
                     </Link> */}
                 </div>
                 <div className="nav-bar__links">
-                    <Link to="/about" className="u-gold u-underline--hover ">À props</Link>
+                    <Link to="/about" className="u-gold u-underline--hover ">À propos de moi</Link>
                     {/* <Link to="/services" className="u-gold u-underline--hover ">Services</Link> */}
                     <Link to="/contact" className="u-gold u-underline--hover ">Contact</Link>
                 </div>
