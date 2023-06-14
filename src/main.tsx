@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './pages/App.tsx'
-import './scss/index.scss'
+import './scss/common.scss'
 import { inject } from '@vercel/analytics';
  
 inject();
