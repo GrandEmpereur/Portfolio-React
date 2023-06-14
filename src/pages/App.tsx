@@ -59,18 +59,18 @@ const App: React.FC = () => {
 
     return (
         <div className="app">
-            <div
-                style={{
-                    opacity: isLoaded ? 1 : 0,
-                    transition: "opacity 1s ease-in-out"
-                }}
-            >
-                {isLoaded && (
+            {isLoaded && (
+                <div
+                    style={{
+                        opacity: isLoaded ? 1 : 0,
+                        transition: "opacity 1s ease-in-out"
+                    }}
+                >
                     <Router>
                         <MainContent />
                     </Router>
-                )}
-            </div>
+                </div>
+            )}
             {!isLoaded && <Preloader logo={preloaderLogo} />}
         </div>
     );
