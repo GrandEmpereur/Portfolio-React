@@ -2,11 +2,12 @@
 
 .Home {
     height: calc(100vh - 95px);
-    overflow: auto;
 
     @include media-breakpoint-down(lg) {
         flex-direction: column-reverse;
         text-align: center;
+        padding: var(--space-2xl) 0;
+        height: 100%;
 
         &__preTitle {
             margin-top: var(--space-xl);

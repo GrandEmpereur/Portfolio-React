@@ -47,7 +47,7 @@ const NavBar: React.FC = () => {
                     <Icon name="Menu" className="icon-open u-gold" onClick={toggleMenu} />
                 )}
 
-                <div className={`burger__menu ${isOpen ? "open" : ""}`}>
+                <div className={`burger__menu ${isOpen ? "open u-block" : "u-none"}`}>
                     <div className="burger__menu__links u-none">
                         <Link
                             to="/about"
