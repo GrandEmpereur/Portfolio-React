@@ -33,12 +33,18 @@ interface contact {
     }
 }
 
-export async function sendContact(data: contact) {
+export interface IContactResponse {
+    success: boolean;
+    message: string;
+}
+
+export async function sendContact(data: contact): Promise<AxiosResponse<IContactResponse> | undefined> {
     try {
-        const sendData = await instance?.post('contacts', data);
+        const sendData = await instance?.post<IContactResponse>('contacts', data);
         return sendData;
     } catch (error) {
-        return error;
+        console.error(error);
+        return undefined;
     }
 }
 

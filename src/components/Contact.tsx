@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
     const sendEmail = async (event: FormEvent) => {
         event.preventDefault();
         updateAxiosInstance()
-        
+
         try {
             const data = {
                 data: {
@@ -36,9 +36,9 @@ const Contact: React.FC = () => {
 
             console.log(data);
 
-            const response: any = await sendContact(data);
+            const response = await sendContact(data);
 
-            if (response.status === 200) {
+            if (response && response.status === 200) {
                 setResult({
                     success: true,
                     message: "Thank you for your message. I'll get back to you as soon as possible.",
@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
                         value={state.firstName}
                         onChange={onInputChange}
                     />
-                    <label 
+                    <label
                         htmlFor="firstName"
                         className="field__label"
                     >First Name</label>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                         value={state.lastName}
                         onChange={onInputChange}
                     />
-                    <label 
+                    <label
                         htmlFor="lastName"
                         className="field__label"
                     >Last Name</label>
@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
                         value={state.email}
                         onChange={onInputChange}
                     />
-                    <label 
+                    <label
                         htmlFor="email"
                         className="field__label"
                     >Email</label>
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
                         value={state.phone}
                         onChange={onInputChange}
                     />
-                    <label 
+                    <label
                         htmlFor="phone"
                         className="field__label"
                     >Phone</label>
@@ -139,13 +139,13 @@ const Contact: React.FC = () => {
                         value={state.message}
                         onChange={onInputChange}
                     />
-                    <label 
+                    <label
                         htmlFor="message"
                         className="field__label"
                     >Message</label>
                 </div>
 
-                <button 
+                <button
                     type="submit"
                     className="button button--primary "
                 >Send</button>

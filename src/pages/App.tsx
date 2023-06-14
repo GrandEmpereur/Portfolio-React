@@ -4,7 +4,7 @@ import Preloader from "../components/Preloader";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
 import AboutPage from "./About";
-import Project from "./Project";
+// import Project from "./Project";
 import Contact from "../components/Contact.tsx";
 import PageTransition from "../common/PageTransition";
 import "../scss/templates/App.scss";
