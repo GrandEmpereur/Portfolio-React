@@ -16,6 +16,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
         const pageElement = pageContainerRef.current;
 
         if (pageElement) {
+            setIsAnimating(true);
             document.body.style.overflow = 'hidden';
             gsap.fromTo(
                 pageElement,
@@ -24,13 +25,17 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
                     opacity: 1,
                     y: 0,
                     duration: 1,
-                    onComplete: () => { document.body.style.overflow = 'auto'; }
+                    onComplete: () => { 
+                        document.body.style.overflow = 'auto'; 
+                        setIsAnimating(false);
+                    }
                 }
             );
         }
 
         return () => {
             if (pageElement) {
+                setIsAnimating(true);
                 document.body.style.overflow = 'hidden';
                 gsap.fromTo(
                     pageElement,
@@ -39,7 +44,10 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
                         opacity: 0,
                         y: -30,
                         duration: 1,
-                        onComplete: () => { document.body.style.overflow = 'auto'; }
+                        onComplete: () => { 
+                            document.body.style.overflow = 'auto'; 
+                            setIsAnimating(false);
+                        }
                     }
                 );
             }
