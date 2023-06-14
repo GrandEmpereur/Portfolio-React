@@ -54,8 +54,12 @@ const AboutMe: React.FC = () => {
                                 <h3 className="h4 keep-size">Adresse : </h3>
                                 <p className="h4 keep-size">Paris / Bezier</p>
                             </div>
+                            <div className="adresse u-flex h-gap-m">
+                                <h3 className="h4 keep-size">Telephone : </h3>
+                                <p className="h4 keep-size">+33 6 58 29 23 30</p>
+                            </div>
 
-                            <div className="About__cv--content--left--btn u-pad-t-xl u-none--lg">
+                            <div className="About__cv--content--left--btn u-pad-t-l u-none--lg">
                                 <a href="./pdf/Cv.pdf" download>
                                     <button className="button button--primary">Télécharger mon CV</button>
                                 </a>
@@ -65,7 +69,7 @@ const AboutMe: React.FC = () => {
                         <div className="About__cv--content--right u-flex flex-column v-gap-xl">
                             <div className="freelance u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Freelance : </h3>
-                                <p className="h4 keep-size">Disponible / soire et week-end</p>
+                                <p className="h4 keep-size">Disponible | soire et week-end</p>
                             </div>
                             <div className="langue u-flex h-gap-m">
                                 <h3 className="h4 keep-size">Langue : </h3>
