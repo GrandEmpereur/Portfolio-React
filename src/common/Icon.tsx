@@ -34,8 +34,6 @@ const Icon: React.FC<IconProps> = ({
         className={className} 
         width={size} 
         height={size} 
-        fill={fill}
-        stroke={stroke}
         onClick={onClick} 
         />;
     } else if (symbolId) {
