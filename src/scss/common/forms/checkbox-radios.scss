@@ -1,0 +1,80 @@
+@import "../../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Form field : Radio & Checkbox
+// ---------------------------------------------------------------------------------------------------------------------
+
+$box-size: 20px;
+$box-small-size: 10px;
+
+.checkbox-wrapper,
+.radio-wrapper {
+  label {
+    background: none;
+  }
+
+  span {
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+    }
+
+    &::before {
+      margin-right: var(--space-m);
+      height: $box-size;
+      width: $box-size;
+      border: 1px solid #939393;
+      border-radius: 4px;
+      flex-shrink: 0;
+
+      @include media-breakpoint-down(md) {
+        margin-right: var(--space-s);
+      }
+    }
+
+    &::after {
+      height: $box-small-size;
+      width: $box-small-size;
+      position: absolute;
+      top: calc($box-small-size / 2);
+      left: calc($box-small-size / 2);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check' viewBox='0 0 24 24'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+      transition: opacity .2s ease, transform .2s ease;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+
+    &:not(:checked) ~ span {
+      &::after {
+        opacity: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+        &:hover::after {
+          opacity: .3;
+          transform: scale(.7);
+        }
+      }
+    }
+  }
+
+  label:active span::after {
+    transform: scale(1.2);
+  }
+}
+
+.radio-wrapper {
+  span {
+    &::before,
+    &::after {
+      border-radius: 50%;
+    }
+  }
+}

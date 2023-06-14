@@ -1,0 +1,417 @@
+// ---------------------------------------------------------------------------------------------------------------------
+// Fonts
+// ---------------------------------------------------------------------------------------------------------------------
+
+@each $i, $font in $fonts {
+	.u-font-#{$i}{ font-family: #{$font} }
+}
+
+@each $i, $font-size in $font-sizes {
+    .u-text-#{$i}{ font-size: #{$font-size} }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Colors
+// ---------------------------------------------------------------------------------------------------------------------
+
+@each $i, $color in $colors {
+	.u-#{$i}{ color: #{$color} }
+	.u-bg-#{$i}{ background-color: #{$color} }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Position
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-relative   { position: relative; }
+.u-absolute   { position: absolute; }
+.u-fixed      { position: fixed; }
+.u-static     { position: static; }
+.u-sticky     { position: sticky; position: -webkit-sticky; }
+
+.u-absolute-top     { top: 0; }
+.u-absolute-bottom  { bottom: 0; }
+.u-absolute-left { left: 0; }
+.u-absolute-right { right: 0; }
+.u-absolute-all { top: 0; bottom: 0; left: 0; right: 0; }
+
+.u-absolute-h-center {
+    top: 50%;
+    transform: translate3d(0%, -50%, 0);
+}
+
+.u-absolute-center {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Display
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-block { display: block; }
+.u-inline { display: inline; }
+.u-flex { display: flex; }
+.u-grid { display: grid; }
+.u-none { display: none; }
+.hidden { display: none !important; }
+.u-inline-block {display: inline-block;}
+
+.u-block-center {
+    display: block;
+    margin: 0 auto;
+}
+
+@each $key, $bp in $class-breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-block--#{$key} { display: block; }
+        .u-inline--#{$key} { display: inline; }
+        .u-flex--#{$key} { display: flex; }
+        .u-grid--#{$key} { display: grid; }
+        .u-inline-block--#{$key} {display: inline-block;}
+        .u-none--#{$key} { display: none !important; }
+    }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Flex helpers
+// ---------------------------------------------------------------------------------------------------------------------
+
+@each $key, $space in $spacings {
+    .gap-#{$key} { @include flex-gap(both, #{$space}); }
+}
+
+@each $key, $space in $spacings {
+    .h-gap-#{$key} { @include flex-gap(horizontal, #{$space}); }
+}
+
+@each $key, $space in $spacings {
+    .v-gap-#{$key} { @include flex-gap(vertical, #{$space}); }
+}
+
+@each $key, $bp in $class-breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .flex-column--#{$key} { flex-direction: column; }
+        .flex-row--#{$key} { flex-direction: row; }
+    }
+}
+
+.flex-fill { flex: 1 1 auto; }
+
+// Flex direction
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-column-reverse { flex-direction: column-reverse; }
+
+// Flex order
+.flex-order-first { order: -1; }
+.flex-order-last { order: 1; }
+
+// Flex grow
+.flex-grow-0 { flex-grow: 0; }
+.flex-grow-1 { flex-grow: 1; }
+
+// Flex shrink
+.flex-shrink-0 { flex-shrink: 0; }
+.flex-shrink-1 { flex-shrink: 1; }
+
+// Flex wrap
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+.flex-wrap-reverse { flex-wrap: wrap-reverse; }
+
+// Justify content
+.justify-content-start { justify-content: flex-start; }
+.justify-content-end { justify-content: flex-end; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-around { justify-content: space-around; }
+.justify-content-evenly { justify-content: space-evenly; }
+
+// Align items
+.align-items-start { align-items: flex-start; }
+.align-items-end { align-items: flex-end; }
+.align-items-center { align-items: center; }
+.align-items-baseline { align-items: baseline; }
+.align-items-stretch { align-items: stretch; }
+.align-content-start { align-content: flex-start; }
+.align-content-end { align-content: flex-end; }
+.align-content-center { align-content: center; }
+.align-content-between { align-content: space-between; }
+.align-content-around { align-content: space-around; }
+.align-content-stretch { align-content: stretch; }
+
+// Align self
+.align-self-auto { align-self: auto; }
+.align-self-start { align-self: flex-start; }
+.align-self-end { align-self: flex-end; }
+.align-self-center { align-self: center; }
+.align-self-baseline { align-self: baseline; }
+.align-self-stretch { align-self: stretch; }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Grid helpers
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-grid-columns-fill {
+    grid-template-columns: repeat(auto-fill, minmax(0px, 1fr));
+}
+
+.u-grid-columns-fit {
+    grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Width
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-full-width{ width: 100%; }
+.u-full-vp-width{ width: 100vw; }
+.u-half-width { width: 50%; }
+.u-auto-width { width: auto; }
+.u-full-height{ height: 100%; }
+.u-full-vp-height{ height: 100vh; }
+.u-full-vp-min-height{ min-height: 100vh; }
+.u-half-height { height: 50%; }
+.u-full-wh {
+    width: 100%;
+    height: 100%;
+}
+.u-full-vp-wh {
+    width: 100vw;
+    height: 100vh;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Z-index
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-above    { z-index: 1111; }
+.u-front    { z-index: 100; }
+.u-middle   { z-index: 10; }
+.u-back     { z-index: 1; }
+.u-behind   { z-index: -1; }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Text
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-left           { text-align: left; }
+.u-right          { text-align: right; }
+.u-center         { text-align: center; }
+.u-justify        { text-align: justify; }
+.u-nowrap         { white-space: nowrap; }
+
+@each $key, $bp in $class-breakpoints {
+    @media ( max-width: #{$bp} ) {
+        .u-left--#{$key}    { text-align: left; }
+        .u-right--#{$key}   { text-align: right; }
+        .u-center--#{$key}  { text-align: center; }
+    }
+}
+
+.u-decoration-none { text-decoration: none; }
+.u-underline { text-decoration: underline; }
+.u-line-through { text-decoration: line-through; }
+
+.u-capitalize { text-transform: capitalize; }
+.u-uppercase { text-transform: uppercase; }
+
+.u-ellipsis {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.u-break-word {
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Padding
+// ---------------------------------------------------------------------------------------------------------------------
+
+@each $i, $spacing in $spacings {
+    .u-pad-#{$i}{ padding: #{$spacing}; }
+    .u-pad-t-#{$i}{ padding-top: #{$spacing}; }
+    .u-pad-b-#{$i}{ padding-bottom: #{$spacing}; }
+    .u-pad-tb-#{$i}{ padding-top: #{$spacing}; padding-bottom: #{$spacing}; }
+    .u-pad-l-#{$i}{ padding-left: #{$spacing}; }
+    .u-pad-r-#{$i}{ padding-right: #{$spacing}; }
+    .u-pad-lr-#{$i}{ padding-left: #{$spacing}; padding-right: #{$spacing}; }
+
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Margin
+// ---------------------------------------------------------------------------------------------------------------------
+
+@each $i, $spacing in $spacings {
+    .u-marg-#{$i}{ margin: #{$spacing}; }
+    .u-marg-t-#{$i}{ margin-top: #{$spacing}; }
+    .u-marg-b-#{$i}{ margin-bottom: #{$spacing}; }
+    .u-marg-l-#{$i}{ margin-left: #{$spacing}; }
+    .u-marg-r-#{$i}{ margin-right: #{$spacing}; }
+}
+
+.u-marg-t-auto { margin-top: auto; }
+.u-marg-b-auto { margin-bottom: auto; }
+.u-marg-l-auto { margin-left: auto; }
+.u-marg-r-auto { margin-right: auto; }
+
+.u-marg-lr-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Wrappers
+// ---------------------------------------------------------------------------------------------------------------------
+
+.u-overflow-hidden  { overflow: hidden; }
+.u-overflow-auto    { overflow: auto; }
+
+// allow overflow but hide scrollbar
+.u-overflow-no-scrollbar {
+    overflow: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+}
+
+.overflow__content {
+    width: auto;
+    white-space: nowrap;
+
+    > * {
+        white-space: normal;
+    }
+}
+
+.u-overflow--mobile {
+    @include media-breakpoint-down(lg) {
+        overflow: hidden;
+        max-width: 100%;
+
+        .overflow__content {
+            padding: var(--space-xs) 0; // for scrollbars
+            width: auto;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+
+            // reset white-space for inheritance
+            > * {
+                white-space: normal;
+            }
+        }
+    }
+}
+
+.u-wrapper-inline-block {
+    font-size: 0;
+    position: relative;
+    height: 100%;
+    letter-spacing: normal;
+}
+
+.u-wrapper-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.u-cover{
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.u-contain { object-fit: contain; }
+
+.u-fit {
+    object-fit: cover;
+    // IE11 polyfill https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/object-fit
+    font-family: "object-fit: cover";
+}
+
+.u-v-top { vertical-align: top; }
+.u-v-middle { vertical-align: middle; }
+.u-v-bottom { vertical-align: bottom; }
+
+.u-pointer-none     { pointer-events: none; }
+.u-pointer-all      { pointer-events: all; }
+.u-select-none      { user-select: none; }
+.u-cursor-auto   { cursor: auto; }
+.u-cursor-pointer   { cursor: pointer; }
+.u-cursor-close     { cursor: url("data:image/svg+xml,%3Csvg width='40' height='40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='20' fill='%23fff'/%3E%3Cpath d='m24 16-8 8m0-8 8 8' stroke='%233C3D3E' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 20 20, pointer; }
+
+.u-visibility-hidden {
+    visibility: hidden;
+}
+.u-appearance-none {
+    appearance: none;
+}
+
+.u-antialiased{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.u-sub-antialiased{
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: auto;
+}
+
+.u-round {
+    border-radius: 50%;
+}
+
+.u-rounded-border { 
+    border-radius: 10px; 
+}
+
+.u-expand {
+    position: static;
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal !important;
+}

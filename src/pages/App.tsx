@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import '../scss/templates/App.scss'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Preloader from "../components/Preloader";
+import Home from "./Home";
+import NavBar from "../common/NavBar";
+import AboutPage from "./About";
+// import Project from "./Project";
+import Contact from "../components/Contact.tsx";
+import PageTransition from "../common/PageTransition";
+import "../scss/templates/App.scss";
 
-function App() {
-  const [count, setCount] = useState(0)
+/**
+ * MainContent is a React component that contains all the routes and the NavBar.
+ */
+const MainContent: React.FC = () => {
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    return (
+        <>
+            <NavBar />
+            <PageTransition>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    {/* <Route path="/projects" element={<Project />} /> */}
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </PageTransition>
+        </>
+    );
+};
 
-export default App
+/**
+ * App is the main React component.
+ * It sets the window height CSS variable and starts the preloader animation.
+ * Once the preloader animation is complete, it renders the MainContent component.
+ */
+const App: React.FC = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        /**
+         * Sets the CSS variable for the window height to the actual window height.
+         */
+        const timer = setTimeout(() => {
+            setTimeout(() => setIsLoaded(true), 1000);
+        }, 2000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, []);
+
+    const preloaderLogo = {
+        src: "./images/preloader.png",
+        alt: "Logo",
+        width: 420,
+        height: 430,
+    };
+
+    return (
+        <div className="app">
+            {isLoaded && (
+                <div
+                    style={{
+                        opacity: isLoaded ? 1 : 0,
+                        transition: "opacity 1s ease-in-out"
+                    }}
+                >
+                    <Router>
+                        <MainContent />
+                    </Router>
+                </div>
+            )}
+            {!isLoaded && <Preloader logo={preloaderLogo} />}
+        </div>
+    );
+};
+
+export default App;

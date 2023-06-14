@@ -1,0 +1,55 @@
+@import "../core";
+
+.timeline {
+    @include media-breakpoint-down(lg) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include flex-gap(vertical, var(--space-xl));
+    }
+    .timeline-section {
+        position: relative;
+
+        .line {
+            width: 3px;
+            height: 100%;
+            background-color: var(--color-white);
+            position: absolute;
+            left: 10px;
+            top: 0;
+
+            @include media-breakpoint-down(lg) {
+                left: 10px;
+            }
+        }
+    }
+
+    .timeline-item {
+        margin-left: var(--space-xl);
+        width: 34.688rem;
+
+        @include media-breakpoint-down(lg) {
+            width: 90%;
+        }
+
+        .timeline-item__date {
+            position: relative;
+
+            .line {
+                width: 0;
+                height: 0;
+
+                &::before {
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    background-color: var(--color-white);
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -4px;
+                    left: -45px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,205 @@
+@import "../core";
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Button base layouts (same for all buttons style)
+// ---------------------------------------------------------------------------------------------------------------------
+
+.button {
+  --button-height: 3.125rem;
+  --button-height-large: 4.125rem;
+  --button-height-mobile: 2.125rem;
+  --button-width: 7.5rem;
+
+  @extend %button;
+
+  font-size: 0.875rem; // 14px
+  border-radius: var(--button-border-radius);
+  transition: all 150ms ease-in;
+  border: 1px solid transparent;
+  max-height: var(--button-height);
+  min-width: var(--button-width);
+  padding: 1.1rem var(--space-xl) 1rem var(--space-xl);
+
+  &:focus {
+    outline: 0;
+  }
+
+  span, svg {
+    transition: color 150ms ease-in;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-left: 1.3125rem;
+    padding-right: 1.3125rem;
+  }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Button styles
+// ---------------------------------------------------------------------------------------------------------------------
+.button.button--primary {
+  background: var(--color-dark-black);
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-family: 'Amaranth', sans-serif;
+
+  span {
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+
+  &.button--primary-border-hover:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      border: 1px solid var(--color-gray-black);
+    }
+  }
+
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      color: var(--color-gray-white);
+      background: var(--color-gold);
+
+      span {
+        color: var(--color-gray-black);
+      }
+    }
+  }
+}
+
+.button.button--secondary {
+  border: 1px solid transparent;
+  color: var(--color-gray-white);
+  background: var(--color-gold);
+  text-transform: uppercase;
+  font-family: 'Amaranth', sans-serif;
+
+  span {
+    color: var(--color-gray-black);
+    text-transform: uppercase;
+  }
+
+  &.has-icon svg {
+    color: var(--color-gray-black);
+  }
+
+  &:not(.button--no-hover):hover {
+    @media (hover: hover) and (pointer: fine) {
+      background: var(--color-gray-black);
+      color: var(--color-white);
+
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button has icon
+// // ---------------------------------------------------------------------------------------------------------------------
+.button:has(svg) {
+  display: flex;
+  @include flex-gap(both, var(--space-s));
+
+  svg {
+    color: inherit;
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button disabled
+// // ---------------------------------------------------------------------------------------------------------------------
+.button:disabled,
+.button[aria-disabled='true'],
+.button.disabled {
+  cursor: not-allowed;
+  border-color: transparent;
+  background: var(--color-philippine-gray);
+  color: var(--color-white);
+
+  span {
+    color: var(--color-white);
+  }
+
+  &:hover {
+    @media (hover: hover) and (pointer: fine) {
+      border-color: transparent !important;
+      background: var(--color-philippine-gray) !important;
+      color: var(--color-white) !important;
+
+      span {
+        color: var(--color-white) !important;
+      }
+    }
+  }
+}
+
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button round
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--round {
+  padding: 0;
+  border-radius: 50%;
+  min-width: unset;
+  width: var(--button-height);
+  height: var(--button-height);
+
+  @include media-breakpoint-down(md) {
+    width: var(--button-height-mobile);
+    height: var(--button-height-mobile);
+    min-height: initial;
+  }
+
+  &.button--large {
+    @include media-breakpoint-up(md) {
+      width: var(--button-height-large);
+      height: var(--button-height-large);
+      min-height: var(--button-height-large);
+    }
+  }
+}
+
+// // ---------------------------------------------------------------------------------------------------------------------
+// // Button loading
+// // ---------------------------------------------------------------------------------------------------------------------
+.button.button--loading,
+.button.button--loading[aria-disabled='true'] {
+  color: transparent;
+  position: relative;
+  background: var(--color-gray-black);
+  transition: unset;
+
+  span {
+    color: transparent !important;
+    transition: unset;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--color-white);
+    border-top: 3px solid var(--color-gray-black);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Global fixes
+// ---------------------------------------------------------------------------------------------------------------------
+
+/* prevent the click event to be catched by the span element inside the button element */
+button > span {
+  pointer-events: none;
+}

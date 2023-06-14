@@ -1,8 +1,75 @@
-$noir-gris: #1E1E1E;
-$noir: #030302;
-$or: #DAB967;
-$blanc: #fff;
-$gris: #696969;
+// ---------------------------------------------------------------------------------------------------------------------
 
-$heading-font: 'Amaranth', sans-serif;
-$body-font: 'Crimson Text', serif;
+// Variables defined in this file are value that are considered as "static" and should not be changed.
+
+// ---------------------------------------------------------------------------------------------------------------------
+
+// Fonts
+$font-title: "RedHatDisplay", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+$font-text: "RedHatDisplay", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue,Arial,Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+
+$colors: (
+        "gray-black": var(--color-gray-black),
+        "gray": var(--color-gray),
+        "white": var(--color-white),
+        "black": var(--color-black),
+        "gold": var(--color-gold),
+        "error": var(--color-error),
+        "success": var(--color-success)
+);
+
+$fonts: (
+        "heading": var(--heading-font-family),
+        "body": var(--body-font-family),
+        "lato": var(--lato-font-family)
+);
+
+$font-sizes: (
+        "xs": var(--text-xs),
+        "s": var(--text-s),
+        "m": var(--text-m),
+        "l": var(--text-l),
+        "xl": var(--text-xl),
+        "2xl": var(--text-2xl),
+        "3xl": var(--text-3xl),
+        "4xl": var(--text-4xl)
+);
+
+$spacings: (
+        "0": 0,
+        "xs" : var(--space-xs),
+        "s": var(--space-s),
+        "m" : var(--space-m),
+        "l" : var(--space-l),
+        "xl" : var(--space-xl),
+        "2xl" : var(--space-2xl),
+        "3xl" : var(--space-3xl),
+        "4xl" : var(--space-4xl)
+);
+
+// Breakpoints
+$grid-breakpoints: (
+        'xs': 350px,    // Mobile
+        'sm': 520px,    // Mobile
+        'md': 768px,    // Tablet and small desktop screens
+        'lg': 1024px,   // Desktop
+        'xlg': 1200px,  // Large desktop
+        'xxlg': 1440px, // Extra large Desktop
+        'xxxlg': 1800px // Ultra large Desktop (Full HD / 4K...)
+);
+
+// Same breakpoints but used in utilities so use only the necessary
+$class-breakpoints: (
+        'sm': 520px,    // Mobile
+        'md': 768px,    // Tablet and small desktop screens
+        'lg': 1024px,   // Desktop
+        'xlg': 1200px,  // Large desktop
+);
+
+// Font weight
+$weight-thin:      100 !default;
+$weight-light:     300 !default;
+$weight-normal:    400 !default;
+$weight-bold:      500 !default;
+$weight-semi-bold: 500 !default;
+$weight-black:     700 !default;

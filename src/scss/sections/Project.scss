@@ -1,0 +1,16 @@
+@import "../core";
+
+.Project {
+    &-slider-button-next {
+        right: var(--space-xl);
+    }
+
+    &-slider-button-prev {
+        left: var(--space-xl);
+    }
+
+    &__item {
+        width: 420px !important;
+        height: 430px !important;
+    }
+}

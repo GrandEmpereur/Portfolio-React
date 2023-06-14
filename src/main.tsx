@@ -1,10 +1,9 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './pages/App.tsx'
-import './scss/index.scss'
-import { inject } from '@vercel/analytics';
-
-inject();
+import App from './pages/App'
+import './scss/common.scss'
+import SVGDefinitions from './assets/svg-definition'
+import Header from './common/Header'
+import'./scss/templates/App.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
