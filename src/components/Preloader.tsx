@@ -16,7 +16,7 @@ const Preloader: React.FC<PreloaderProps> = ({ style, logo }) => {
         if (count < 100) {
             intervalRef.current = setInterval(() => {
                 setCount((prevCount) => prevCount + 1);
-            }, 50);
+            }, 20);
         } else {
             if (intervalRef.current) {
                 clearInterval(intervalRef.current);

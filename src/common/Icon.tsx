@@ -16,7 +16,7 @@ const Icon: React.FC<IconProps> = ({
     symbolId,
     className,
     size = 32,
-    fill = 'none',
+    fill = 'currentColor',
     stroke = 'currentColor',
     onClick,
 }) => {
@@ -30,7 +30,12 @@ const Icon: React.FC<IconProps> = ({
     if (name) {
         const formattedName = formatName(name);
         const IconComponent = Icons[formattedName];
-        return <IconComponent className={className} onClick={onClick} />;
+        return <IconComponent 
+        className={className} 
+        width={size} 
+        height={size} 
+        onClick={onClick} 
+        />;
     } else if (symbolId) {
         return (
             <svg

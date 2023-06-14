@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Preloader from "../components/Preloader";
-import Footer from "../common/Footer";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
-import "../scss/templates/App.scss";
-import PageTransition from "../common/PageTransition";
 import AboutPage from "./About";
-import Project from "./Project";
+// import Project from "./Project";
+import Contact from "../components/Contact.tsx";
+import PageTransition from "../common/PageTransition";
+import "../scss/templates/App.scss";
 
 /**
  * MainContent is a React component that contains all the routes and the NavBar.
- * It also conditionally renders the Footer depending on the current route.
  */
 const MainContent: React.FC = () => {
-    const location = useLocation();
 
     return (
         <>
             <NavBar />
-            <main>
-                <PageTransition>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/projects" element={<Project />} />
-                        <Route path="/about" element={<AboutPage />} />
-                        <Route path="/contact" element={<Home />} />
-                    </Routes>
-                </PageTransition>
-            </main>
-            {location.pathname !== "/" && <Footer />}
+            <PageTransition>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    {/* <Route path="/projects" element={<Project />} /> */}
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </PageTransition>
         </>
     );
 };
@@ -46,21 +41,12 @@ const App: React.FC = () => {
         /**
          * Sets the CSS variable for the window height to the actual window height.
          */
-        const setVhProperty = () => {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty("--window-inner-height", `${vh}px`);
-        };
-
         const timer = setTimeout(() => {
             setTimeout(() => setIsLoaded(true), 1000);
-        }, 5000);
-
-        setVhProperty();
-        window.addEventListener("resize", setVhProperty);
+        }, 2000);
 
         return () => {
             clearTimeout(timer);
-            window.removeEventListener("resize", setVhProperty);
         };
     }, []);
 
