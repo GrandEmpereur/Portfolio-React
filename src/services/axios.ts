@@ -41,3 +41,12 @@ export async function sendContact(data: contact) {
         return error;
     }
 }
+
+export async function getImages() {
+    try {
+        const images = await instance?.get('tests?populate=deep');
+        return images;
+    } catch (error) {
+        return error;
+    }
+}

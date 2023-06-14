@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import "../scss/sections/Contact.scss";
-import { sendContact, updateAxiosInstance } from "../services/axios";
+import { sendContact, updateAxiosInstance, getImages } from "../services/axios";
 
 interface IFormState {
     firstName: string;
@@ -18,10 +18,14 @@ interface IResult {
 const Contact: React.FC = () => {
     const [state, setState] = useState<IFormState>({ firstName: "", lastName: "", email: "", phone: "", message: "" });
     const [result, setResult] = useState<IResult | null>(null);
+    const [image, setImage] = useState<string | null>(null);
+    const [imageWidth, setImageWidth] = useState<number | null>(null);
+    const [imageHeight, setImageHeight] = useState<number | null>(null);
 
     const sendEmail = async (event: FormEvent) => {
         event.preventDefault();
         updateAxiosInstance()
+        
         try {
             const data = {
                 data: {
