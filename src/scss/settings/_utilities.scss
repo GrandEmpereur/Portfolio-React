@@ -50,7 +50,7 @@
 // Display
 // ---------------------------------------------------------------------------------------------------------------------
 
-.u-block { display: block; }
+.u-block { display: block !important; }
 .u-inline { display: inline; }
 .u-flex { display: flex; }
 .u-grid { display: grid; }
@@ -65,7 +65,7 @@
 
 @each $key, $bp in $class-breakpoints {
     @media ( max-width: #{$bp} ) {
-        .u-block--#{$key} { display: block; }
+        .u-block--#{$key} { display: block !important; }
         .u-inline--#{$key} { display: inline; }
         .u-flex--#{$key} { display: flex; }
         .u-grid--#{$key} { display: grid; }
