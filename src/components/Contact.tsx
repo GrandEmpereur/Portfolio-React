@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import "../scss/sections/Contact.scss";
 import { sendContact, updateAxiosInstance } from "../services/axios";
 import { IFormState } from "../types/Contact.type.ts";
+import * as yup from 'yup';
 
 const Contact: React.FC = () => {
     const [state, setState] = useState<IFormState>({ firstName: "", lastName: "", email: "", phone: "", message: "" });
@@ -10,9 +11,9 @@ const Contact: React.FC = () => {
 
     const sendEmail = async (event: FormEvent) => {
         event.preventDefault();
-        updateAxiosInstance()
+        updateAxiosInstance();
 
-        const errorFields = validateFields();
+        const errorFields = await validateFields();
 
         if(Object.values(errorFields).some(field => field !== "")){
             setErrors(errorFields);
@@ -54,35 +55,25 @@ const Contact: React.FC = () => {
         });
     };
 
-    const validateFields = (): IFormState => {
-        const errorFields: IFormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
+    const validateFields = async (): Promise<IFormState> => {
+        const schema = yup.object().shape({
+            firstName: yup.string().required("First Name is required"),
+            lastName: yup.string().required("Last Name is required"),
+            email: yup.string().required("Email is required").email("Email is not valid"),
+            phone: yup.string().required("Phone is required"),
+            message: yup.string().required("Message is required")
+        });
 
-        if (!state.firstName) {
-            errorFields.firstName = "First Name is required";
+        try {
+            await schema.validate(state, { abortEarly: false });
+            return { firstName: "", lastName: "", email: "", phone: "", message: "" };
+        } catch (error) {
+            const validationErrors: IFormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
+            (error as yup.ValidationError).inner.forEach((fieldError: yup.ValidationError) => {
+                validationErrors[fieldError.path as keyof IFormState] = fieldError.message;
+            });
+            return validationErrors;
         }
-
-        if (!state.lastName) {
-            errorFields.lastName = "Last Name is required";
-        }
-
-        if (!state.email) {
-            errorFields.email = "Email is required";
-        } else {
-            const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-            if (!emailRegex.test(state.email)) {
-                errorFields.email = "Email is not valid";
-            }
-        }
-
-        if (!state.phone) {
-            errorFields.phone = "Phone is required";
-        }
-
-        if (!state.message) {
-            errorFields.message = "Message is required";
-        }
-
-        return errorFields;
     };
 
     return (
