@@ -4,54 +4,13 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 body {
-  --input-background-color: var(--color-gallery);
-  --input-hover-color: var(--color-gallery);
-  --input-focus-color: var(--color-gallery);
+  --input-background-color: var(--color-bright-gray);
+  --input-hover-color: var(--color-bright-gray);
+  --input-focus-color: var(--color-bright-gray);
   --input-radius: 10px;
-  --input-height: 2.8rem;
-  --input-padding-lr: 1.5rem;
+  --input-height: 2.5rem;
+  --input-padding-lr: 1rem;
   --input-label-font-size: 0.875rem;
-}
-
-%field-input {
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  border-radius: var(--field-border-radius);
-  background: var(--input-background-color);
-  color: var(--color-gray-black);
-  font-size: var(--text-small);
-  width: 100%;
-  height: var(--input-height);
-  box-sizing: border-box;
-  transition: background-color var(--global-transition-speed) var(--global-ease);
-  text-align: left;
-  padding: 0.56rem 1.5rem 0.625rem;
-  border: 0.0625rem solid transparent;
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover, 
-  &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px var(--input-hover-color) inset;
-    transition: background-color 5000s ease-in-out 0s;
-  }
-
-  &:hover {
-    background: var(--input-hover-color);
-  }
-
-  &:focus {
-    background: var(--input-focus-color);
-    outline: transparent;
-  }
-
-  &:not(:placeholder-shown):invalid {
-    border-color: var(--color-error);
-
-    & ~ label {
-      color: var(--color-error);
-    }
-  }
 }
 
 @import './forms/select';

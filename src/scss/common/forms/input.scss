@@ -4,12 +4,6 @@
 // Form field : Input
 // ---------------------------------------------------------------------------------------------------------------------
 
-input {
-  &::-webkit-inner-spin-button {
-    display: none !important;
-  }
-}
-
 .field {
   position: relative;
   width: 100%;
@@ -28,14 +22,22 @@ input {
   }
 
   &__input {
-    @extend %field-input;
+    @extend %field-input !optional;
+  }
+
+  &__input--error {
+    border: 0.0625rem solid var(--color-error);
+
+    & ~ .field__label {
+      color: var(--color-error);
+    }
   }
 
   &__helper {
     opacity: .5;
     font-size: .7rem;
     line-height: 1.2;
-    margin-top: .25rem;
+    margin-top: .5rem;
   }
 
   &__label {
@@ -59,17 +61,5 @@ input {
     font-size: 0.75rem;
     top: -1.5em;
     left: 0;
-  }
-}
-
-.show-password,
-.hide-password {
-  top: 25%;
-  right: 1em;
-  cursor: pointer;
-
-  svg {
-    transform-origin: 100% 50%;
-    transform: scale(.75);
   }
 }

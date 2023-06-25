@@ -4,9 +4,42 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------------------------------------------------
-// Titles & Typography
+// Input
 // ---------------------------------------------------------------------------------------------------------------------
 
+%field-input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid var(--color-bright-gray);
+    border-radius: var(--field-border-radius);
+    background: var(--input-background-color);
+    color: var(--color-dark-black);
+    font-size: var(--text-small);
+    width: 100%;
+    height: var(--input-height);
+    box-sizing: border-box;
+    transition: background var(--global-transition-speed) var(--globalEase);
+    text-align: left;
+    padding: 0.56rem 1rem 0.45rem;
+
+    &:hover {
+        background: var(--input-hover-color);
+    }
+
+    &:focus {
+        background: var(--input-focus-color);
+        outline: transparent;
+    }
+
+    &:not(:placeholder-shown):invalid {
+        border: 0.0625rem solid var(--color-error);
+
+        &~label {
+            color: var(--color-error);
+        }
+    }
+}
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Icons
@@ -57,6 +90,9 @@
 // ---------------------------------------------------------------------------------------------------------------------
 
 %button {
+    font-size: var(--text-s);
+    border-radius: var(--button-border-radius);
+    letter-spacing: -0.2px;
     cursor: pointer;
     display: inline-block;
     white-space: nowrap;
@@ -74,23 +110,48 @@
     width: fit-content;
 }
 
-// ---------------------------------------------------------------------------------------------------------------------
-// Badges
-// ---------------------------------------------------------------------------------------------------------------------
-
-%badge {
-    border: 1px solid var(--color-bright-gray);
-    padding: .585rem 1.3125rem;
-    border-radius: 100px;
-    text-decoration: none;
-    display: block;
-    transition: all var(--global-ease) var(--global-transition-speed);
+%button-primary {
+    border-radius: var(--button-border-radius);
+    transition: all 150ms ease-in;
+    border: 1px solid var(--color-dark-black);
+    color: var(--color-dark-black);
+    text-transform: uppercase;
 }
 
-%badge-hover {
-    transition: all var(--global-ease) var(--global-transition-speed);
-    border-color: var(--color-gray-black);
-    background-color: var(--color-gray-black);
+%button-tertiary {
+    border-radius: var(--button-border-radius);
+    transition: all 150ms ease-in;
+    border: 1px solid var(--color-dark-black);
+    color: var(--color-dark-black);
+    text-transform: uppercase;
+}
+
+%button-alt {
+    border-radius: var(--button-border-radius);
+    transition: all 150ms ease-in;
+    border: 1px solid var(--color-beige);
+    color: var(--color-dark-black);
+    text-transform: uppercase;
+}
+
+%button-black {
+    border-radius: var(--button-border-radius);
+    transition: all 150ms ease-in;
+    border: 1px solid var(--color-dark-black);
+    background: var(--color-dark-black);
     color: var(--color-white);
-    font-weight: 400;
+    text-transform: uppercase;
+}
+
+%button-black--hover {
+    border: 1px solid var(--color-dark-black);
+    background: transparent;
+    color: var(--color-dark-black);
+}
+
+%button-square {
+    padding: 0;
+    min-width: unset;
+    width: 3.125rem;
+    height: 3.125rem;
 }

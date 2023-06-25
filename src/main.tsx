@@ -8,6 +8,7 @@ import { inject } from '@vercel/analytics';
  
 inject();
 
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <div id="MainContent">
         <SVGDefinitions />
