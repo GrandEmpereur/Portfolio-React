@@ -86,9 +86,9 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className="contact react-component page-width-large u-flex flex-column u-center v-gap-xl">
-            <h1>Contact</h1>
-            <form onSubmit={sendEmail} className="u-flex flex-column v-gap-l u-center align-items-center">
+        <div className="contact page-width-large u-flex flex-column u-center v-gap-xl">
+            <h1>Contactez-moi</h1>
+            <form onSubmit={sendEmail} className="u-flex flex-column u-center align-items-center">
                 <div className="fields-container u-flex flex-column justify-content-center u-marg-b-xl u-half-width">
                     <div className="field u-flex flex-column v-gap-s align-items-start">
                         <input
