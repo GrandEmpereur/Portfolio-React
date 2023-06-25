@@ -34,8 +34,6 @@ const Contact: React.FC = () => {
                 }
             };
 
-            console.log(data);
-
             const response = await sendContact(data);
 
             if (response && response.status === 200) {
@@ -59,7 +57,10 @@ const Contact: React.FC = () => {
             });
 
         } catch (error) {
-            console.log(error);
+            setResult({
+                success: false,
+                message: "Something went wrong. Please try again later.",
+            });
         }
     };
 
