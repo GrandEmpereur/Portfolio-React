@@ -25,6 +25,14 @@
     @extend %field-input !optional;
   }
 
+  &__input--error {
+    border: 0.0625rem solid var(--color-error);
+
+    & ~ .field__label {
+      color: var(--color-error);
+    }
+  }
+
   &__helper {
     opacity: .5;
     font-size: .7rem;
@@ -53,27 +61,5 @@
     font-size: 0.75rem;
     top: -1.5em;
     left: 0;
-  }
-}
-
-.show-password,
-.hide-password {
-  top: 22%;
-  right: 1em;
-  cursor: pointer;
-
-  svg {
-    transform-origin: 100% 50%;
-    transform: scale(.75);
-  }
-}
-
-#register {
-  .show-password,
-  .hide-password {
-    top: initial;
-    bottom: 18%;
-    right: 1.3rem;
-    cursor: pointer;
   }
 }

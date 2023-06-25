@@ -1,66 +1,42 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { toast } from 'react-toastify';
 import "../scss/sections/Contact.scss";
 import { sendContact, updateAxiosInstance } from "../services/axios";
-
-interface IFormState {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    message: string;
-}
-
-interface IResult {
-    success: boolean;
-    message: string;
-}
+import { IFormState } from "../types/Contact.type.ts";
 
 const Contact: React.FC = () => {
     const [state, setState] = useState<IFormState>({ firstName: "", lastName: "", email: "", phone: "", message: "" });
-    const [result, setResult] = useState<IResult | null>(null);
+    const [errors, setErrors] = useState<IFormState>({ firstName: "", lastName: "", email: "", phone: "", message: "" });
 
     const sendEmail = async (event: FormEvent) => {
         event.preventDefault();
         updateAxiosInstance()
 
+        const errorFields = validateFields();
+
+        if(Object.values(errorFields).some(field => field !== "")){
+            setErrors(errorFields);
+            toast.error("Please correct the errors before submitting.");
+            return;
+        }
+
         try {
             const data = {
-                data: {
-                    firstName: state.firstName,
-                    lastName: state.lastName,
-                    email: state.email,
-                    phone: state.phone,
-                    message: state.message,
-                }
+                data: state
             };
 
             const response = await sendContact(data);
 
             if (response && response.status === 200) {
-                setResult({
-                    success: true,
-                    message: "Thank you for your message. I'll get back to you as soon as possible.",
-                });
+                toast.success("Thank you for your message. I'll get back to you as soon as possible.");
+                setState({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+                setErrors({ firstName: "", lastName: "", email: "", phone: "", message: "" });
             } else {
-                setResult({
-                    success: false,
-                    message: "Something went wrong. Please try again later.",
-                });
+                toast.error("Something went wrong. Please try again later.");
             }
 
-            setState({
-                firstName: "",
-                lastName: "",
-                email: "",
-                phone: "",
-                message: "",
-            });
-
         } catch (error) {
-            setResult({
-                success: false,
-                message: "Something went wrong. Please try again later.",
-            });
+            toast.error("Something went wrong. Please try again later.");
         }
     };
 
@@ -71,6 +47,42 @@ const Contact: React.FC = () => {
             ...state,
             [name]: value,
         });
+
+        setErrors({
+            ...errors,
+            [name]: "",
+        });
+    };
+
+    const validateFields = (): IFormState => {
+        const errorFields: IFormState = { firstName: "", lastName: "", email: "", phone: "", message: "" };
+
+        if (!state.firstName) {
+            errorFields.firstName = "First Name is required";
+        }
+
+        if (!state.lastName) {
+            errorFields.lastName = "Last Name is required";
+        }
+
+        if (!state.email) {
+            errorFields.email = "Email is required";
+        } else {
+            const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            if (!emailRegex.test(state.email)) {
+                errorFields.email = "Email is not valid";
+            }
+        }
+
+        if (!state.phone) {
+            errorFields.phone = "Phone is required";
+        }
+
+        if (!state.message) {
+            errorFields.message = "Message is required";
+        }
+
+        return errorFields;
     };
 
     return (
@@ -78,14 +90,12 @@ const Contact: React.FC = () => {
             <h1>Contact</h1>
             <form onSubmit={sendEmail} className="u-flex flex-column v-gap-l u-center align-items-center">
                 <div className="fields-container u-flex flex-column justify-content-center u-marg-b-xl u-half-width">
-                    <div className="field">
+                    <div className="field u-flex flex-column v-gap-s align-items-start">
                         <input
-                            className="field__input"
+                            className={`field__input ${errors.firstName && "field__input--error"}`}
                             type="text"
                             name="firstName"
-                            autoComplete="firstName"
-                            autoCorrect="off"
-                            autoCapitalize="off"
+                            placeholder="First Name"
                             value={state.firstName}
                             onChange={onInputChange}
                         />
@@ -93,15 +103,15 @@ const Contact: React.FC = () => {
                             htmlFor="firstName"
                             className="field__label"
                         >First Name</label>
+                        {errors.firstName && <p className="u-error">{errors.firstName}</p>}
                     </div>
 
-                    <div className="field">
+                    <div className="field u-flex flex-column v-gap-s align-items-start">
                         <input
-                            className="field__input"
+                            className={`field__input ${errors.lastName && "field__input--error"}`}
                             type="text"
                             name="lastName"
-                            autoComplete="lastName"
-                            autoCorrect="off"
+                            placeholder="Last Name"
                             value={state.lastName}
                             onChange={onInputChange}
                         />
@@ -109,13 +119,15 @@ const Contact: React.FC = () => {
                             htmlFor="lastName"
                             className="field__label"
                         >Last Name</label>
+                        {errors.lastName && <p className="u-error">{errors.lastName}</p>}
                     </div>
 
-                    <div className="field">
+                    <div className="field u-flex flex-column v-gap-s align-items-start">
                         <input
-                            className="field__input"
+                            className={`field__input ${errors.email && "field__input--error"}`}
                             type="email"
                             name="email"
+                            placeholder="Email"
                             value={state.email}
                             onChange={onInputChange}
                         />
@@ -123,13 +135,15 @@ const Contact: React.FC = () => {
                             htmlFor="email"
                             className="field__label"
                         >Email</label>
+                        {errors.email && <p className="u-error">{errors.email}</p>}
                     </div>
 
-                    <div className="field">
+                    <div className="field u-flex flex-column v-gap-s align-items-start">
                         <input
-                            className="field__input"
+                            className={`field__input ${errors.phone && "field__input--error"}`}
                             type="tel"
                             name="phone"
+                            placeholder="Phone"
                             value={state.phone}
                             onChange={onInputChange}
                         />
@@ -137,12 +151,14 @@ const Contact: React.FC = () => {
                             htmlFor="phone"
                             className="field__label"
                         >Phone</label>
+                        {errors.phone && <p className="u-error">{errors.phone}</p>}
                     </div>
 
-                    <div className="field">
+                    <div className="field u-flex flex-column v-gap-s align-items-start">
                         <textarea
-                            className="text-area text-area--resize-vertical field__input"
+                            className={`field__input ${errors.message && "field__input--error"}`}
                             name="message"
+                            placeholder="Message"
                             value={state.message}
                             onChange={onInputChange}
                         />
@@ -150,6 +166,7 @@ const Contact: React.FC = () => {
                             htmlFor="message"
                             className="field__label"
                         >Message</label>
+                        {errors.message && <p className="u-error">{errors.message}</p>}
                     </div>
 
                 </div>
@@ -161,11 +178,6 @@ const Contact: React.FC = () => {
                 >Send</button>
 
             </form>
-            {result && (
-                <p className={`${result.success ? "success" : "error"}`}>
-                    {result.message}
-                </p>
-            )}
         </div>
     );
 };

@@ -8,6 +8,8 @@ import AboutPage from "./About";
 import Contact from "../components/Contact.tsx";
 import PageTransition from "../common/PageTransition";
 import "../scss/templates/App.scss";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 /**
  * MainContent is a React component that contains all the routes and the NavBar.
@@ -38,9 +40,6 @@ const App: React.FC = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        /**
-         * Sets the CSS variable for the window height to the actual window height.
-         */
         const timer = setTimeout(() => {
             setTimeout(() => setIsLoaded(true), 1000);
         }, 2000);
@@ -72,6 +71,7 @@ const App: React.FC = () => {
                 </div>
             )}
             {!isLoaded && <Preloader logo={preloaderLogo} />}
+            <ToastContainer />
         </div>
     );
 };
