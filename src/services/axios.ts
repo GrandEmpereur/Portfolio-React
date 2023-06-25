@@ -12,11 +12,11 @@ export function updateAxiosInstance() {
     const key = import.meta.env.VITE_API_KEY_STRAPI ?? '';
 
     if (!key ) {
-        throw new Error('Missing JSONBIN_KEY or JSONBIN_BIN_ID in .env file');
+        throw new Error('Missing Strapi API key');
     }
 
     instance = axios.create({
-        baseURL: 'http://localhost:1337/api/',
+        baseURL: 'https://murmuring-badlands-71376-95b0b2f10147.herokuapp.com/',
         headers: {
             'Authorization': 'Bearer ' + key
         }
