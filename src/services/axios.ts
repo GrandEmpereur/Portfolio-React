@@ -16,7 +16,7 @@ export function updateAxiosInstance() {
     }
 
     instance = axios.create({
-        baseURL: 'https://murmuring-badlands-71376-95b0b2f10147.herokuapp.com/',
+        baseURL: 'https://murmuring-badlands-71376-95b0b2f10147.herokuapp.com/api/',
         headers: {
             'Authorization': 'Bearer ' + key
         }
