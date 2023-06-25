@@ -6,11 +6,12 @@
 
 .select-wrapper {
     position: relative;
+    height: 2.5rem;
 
     &:after {
       content: '';
       position: absolute;
-      right: var(--space-l);
+      right: var(--space-m);
       top: 50%;
       transform: translate3d(0%, -50%, 0);
       height: 12px;
@@ -21,8 +22,8 @@
     }
 
     select {
-        @extend %field-input;
-        padding: 0.56rem 2.5rem 0.625rem 1.5rem;
+        @extend %field-input !optional;
+        padding: 0.56rem 2rem 0.625rem 0.8125rem;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;

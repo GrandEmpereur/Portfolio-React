@@ -77,74 +77,83 @@ const Contact: React.FC = () => {
         <div className="contact react-component page-width-large u-flex flex-column u-center v-gap-xl">
             <h1>Contact</h1>
             <form onSubmit={sendEmail} className="u-flex flex-column v-gap-l u-center align-items-center">
-                <div className="field">
-                    <input
-                        className="field__input"
-                        type="text"
-                        name="firstName"
-                        value={state.firstName}
-                        onChange={onInputChange}
-                    />
-                    <label
-                        htmlFor="firstName"
-                        className="field__label"
-                    >First Name</label>
+                <div className="fields-container u-flex flex-column justify-content-center u-marg-b-xl u-half-width">
+                    <div className="field">
+                        <input
+                            className="field__input"
+                            type="text"
+                            name="firstName"
+                            autoComplete="firstName"
+                            autoCorrect="off"
+                            autoCapitalize="off"
+                            value={state.firstName}
+                            onChange={onInputChange}
+                        />
+                        <label
+                            htmlFor="firstName"
+                            className="field__label"
+                        >First Name</label>
+                    </div>
+
+                    <div className="field">
+                        <input
+                            className="field__input"
+                            type="text"
+                            name="lastName"
+                            autoComplete="lastName"
+                            autoCorrect="off"
+                            value={state.lastName}
+                            onChange={onInputChange}
+                        />
+                        <label
+                            htmlFor="lastName"
+                            className="field__label"
+                        >Last Name</label>
+                    </div>
+
+                    <div className="field">
+                        <input
+                            className="field__input"
+                            type="email"
+                            name="email"
+                            value={state.email}
+                            onChange={onInputChange}
+                        />
+                        <label
+                            htmlFor="email"
+                            className="field__label"
+                        >Email</label>
+                    </div>
+
+                    <div className="field">
+                        <input
+                            className="field__input"
+                            type="tel"
+                            name="phone"
+                            value={state.phone}
+                            onChange={onInputChange}
+                        />
+                        <label
+                            htmlFor="phone"
+                            className="field__label"
+                        >Phone</label>
+                    </div>
+
+                    <div className="field">
+                        <textarea
+                            className="text-area text-area--resize-vertical field__input"
+                            name="message"
+                            value={state.message}
+                            onChange={onInputChange}
+                        />
+                        <label
+                            htmlFor="message"
+                            className="field__label"
+                        >Message</label>
+                    </div>
+
                 </div>
 
-                <div className="field">
-                    <input
-                        className="field__input"
-                        type="text"
-                        name="lastName"
-                        value={state.lastName}
-                        onChange={onInputChange}
-                    />
-                    <label
-                        htmlFor="lastName"
-                        className="field__label"
-                    >Last Name</label>
-                </div>
-
-                <div className="field">
-                    <input
-                        className="field__input"
-                        type="email"
-                        name="email"
-                        value={state.email}
-                        onChange={onInputChange}
-                    />
-                    <label
-                        htmlFor="email"
-                        className="field__label"
-                    >Email</label>
-                </div>
-
-                <div className="field">
-                    <input
-                        className="field__input"
-                        type="tel"
-                        name="phone"
-                        value={state.phone}
-                        onChange={onInputChange}
-                    />
-                    <label
-                        htmlFor="phone"
-                        className="field__label"
-                    >Phone</label>
-                </div>
-
-                <div className="field">
-                    <textarea
-                        className="field__input"
-                        name="message"
-                        value={state.message}
-                        onChange={onInputChange}
-                    />
-                    <label
-                        htmlFor="message"
-                        className="field__label"
-                    >Message</label>
-                </div>
 
                 <button
                     type="submit"

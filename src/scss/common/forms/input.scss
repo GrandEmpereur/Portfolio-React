@@ -4,12 +4,6 @@
 // Form field : Input
 // ---------------------------------------------------------------------------------------------------------------------
 
-input {
-  &::-webkit-inner-spin-button {
-    display: none !important;
-  }
-}
-
 .field {
   position: relative;
   width: 100%;
@@ -28,14 +22,14 @@ input {
   }
 
   &__input {
-    @extend %field-input;
+    @extend %field-input !optional;
   }
 
   &__helper {
     opacity: .5;
     font-size: .7rem;
     line-height: 1.2;
-    margin-top: .25rem;
+    margin-top: .5rem;
   }
 
   &__label {
@@ -64,12 +58,22 @@ input {
 
 .show-password,
 .hide-password {
-  top: 25%;
+  top: 22%;
   right: 1em;
   cursor: pointer;
 
   svg {
     transform-origin: 100% 50%;
     transform: scale(.75);
+  }
+}
+
+#register {
+  .show-password,
+  .hide-password {
+    top: initial;
+    bottom: 18%;
+    right: 1.3rem;
+    cursor: pointer;
   }
 }
