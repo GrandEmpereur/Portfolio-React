@@ -5,7 +5,7 @@ import App from './pages/App'
 import './scss/common.scss'
 import'./scss/templates/App.scss'
 import { inject } from '@vercel/analytics';
- 
+
 inject();
 
 
