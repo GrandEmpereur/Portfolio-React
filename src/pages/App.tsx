@@ -4,7 +4,7 @@ import Preloader from "../components/Preloader";
 import Home from "./Home";
 import NavBar from "../common/NavBar";
 import AboutPage from "./About";
-// import Project from "./Project";
+import Project from "./Project";
 import Contact from "../components/Contact.tsx";
 import PageTransition from "../common/PageTransition";
 import "../scss/templates/App.scss";
@@ -22,7 +22,7 @@ const MainContent: React.FC = () => {
             <PageTransition>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* <Route path="/projects" element={<Project />} /> */}
+                    <Route path="/projects" element={<Project />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/contact" element={<Contact />} />
                 </Routes>

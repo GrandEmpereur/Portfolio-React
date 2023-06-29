@@ -13,5 +13,5 @@ export interface SliderProps {
     data_touch_start?: boolean;
     data_speed?: number;
     data_loop_delay?: number;
-    data_direction?: string;
+    data_direction?: "horizontal" | "vertical" | undefined;
 }

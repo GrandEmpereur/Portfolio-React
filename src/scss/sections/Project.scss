@@ -1,15 +1,15 @@
 @import "../core";
 
 .Project {
-    &-slider-button-next {
+    .slider-button-next {
         right: var(--space-xl);
     }
 
-    &-slider-button-prev {
+    .slider-button-prev {
         left: var(--space-xl);
     }
 
-    &__item {
+    .swiper-items {
         width: 420px !important;
         height: 430px !important;
     }
