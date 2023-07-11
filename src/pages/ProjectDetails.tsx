@@ -1,6 +1,4 @@
 // project.tsx
-import React from 'react';
-
 const ProjectDetails = (props:any ) => {
     return (
         <div className="container section project-details">
