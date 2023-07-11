@@ -97,7 +97,7 @@ const Slider: React.FC<SliderProps> = ({
                 </button>
                 <button
                     type="button"
-                    className="slider-button button button--secondary button--round slider-button-next u-back u-absolute u-absolute-h-center u-none--lg u-flex justify-content-center align-items-center"
+                    className="slider-button swiper-button-disabled button button--secondary button--round slider-button-next u-back u-absolute u-absolute-h-center u-none--lg u-flex justify-content-center align-items-center"
                 >
                     <Icon name="ArrowRight" />
                 </button>

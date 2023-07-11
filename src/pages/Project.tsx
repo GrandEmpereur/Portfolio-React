@@ -74,7 +74,7 @@ const Project: React.FC = () => {
                 <span className="h2 u-block u-pad-t-s u-marg-b-l">Mes projets</span>
             </div>
 
-            <div className="u-overflow--mobile">
+            <div className="u-overflow--mobile u-pad-b-2xl">
                 <Slider
                     data-desktop-only
                     data-speed="200"
@@ -86,12 +86,15 @@ const Project: React.FC = () => {
                                 img={image.img}
                                 imgMobile={image.imgMobile}
                                 default_size="420/430"
-                                breakpoint_width="768"
-                                picture_classes="Project__image u-rounded-border"
+                                breakpoint_width="1024"
+                                img_classes='Project__image u-rounded-border'
                             />
                         </div>
                     ))}
                 </Slider>
+            </div>
+
+            <div className="swiper-info">
             </div>
         </section>
     );
