@@ -16,7 +16,7 @@ export function updateAxiosInstance() {
     }
 
     instance = axios.create({
-        baseURL: 'https://murmuring-badlands-71376-95b0b2f10147.herokuapp.com/api/',
+        baseURL: 'https://murmuring-badlands-71376-95b0b2f10147.herokuapp.com',
         headers: {
             'Authorization': 'Bearer ' + key
         }
@@ -39,8 +39,12 @@ export interface IContactResponse {
 }
 
 export async function sendContact(data: contact): Promise<AxiosResponse<IContactResponse> | undefined> {
+    if (!instance) {
+        throw new Error('Axios instance not initialized');
+    }
+    
     try {
-        const sendData = await instance?.post<IContactResponse>('contacts', data);
+        const sendData = await instance.post<IContactResponse>('/api/contacts', data);
         return sendData;
     } catch (error) {
         console.error(error);
@@ -48,11 +52,24 @@ export async function sendContact(data: contact): Promise<AxiosResponse<IContact
     }
 }
 
-export async function getImages() {
+export async function getImagesByName(name: string): Promise<string | undefined> {
+    if (!instance) {
+        throw new Error('Axios instance not initialized');
+    }
+    
     try {
-        const images = await instance?.get('tests?populate=deep');
-        return images;
+        const response = await instance.get(`/api/upload/files?filters[name][$contains]=${name}`);
+        console.log(response);
+        if (response.status === 200 && response.data.length > 0) {
+            const imageUrl = response.data[0].url;
+            const fullImageUrl = instance.defaults.baseURL + imageUrl;
+            return fullImageUrl;
+        }
+        console.log('Image not found');
+        return undefined;
     } catch (error) {
-        return error;
+        console.log(error);
+        return undefined;
     }
 }
+
