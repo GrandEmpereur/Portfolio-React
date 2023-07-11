@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PictureImg from "../components/PictureImg";
 import "../scss/sections/Navbar.scss";
 import Icon from "./Icon";
+import { getImagesByName, updateAxiosInstance } from "../services/axios.ts";
 
 const NavBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [logo, setLogo] = useState({
+        src: '',
+        alt: 'Logo',
+        width: 30,
+        height: 30,
+    });
 
     const toggleMenu = () => {
         console.log("toggleMenu");
@@ -17,25 +24,24 @@ const NavBar: React.FC = () => {
         setIsOpen(false);
     };
 
+    useEffect(() => {
+        updateAxiosInstance();
+        const fetchImages = async () => {
+            const logoImage = await getImagesByName('logo');
+            setLogo(prevState => ({
+                ...prevState,
+                src: logoImage || prevState.src,
+            }));
+        };
+        fetchImages()
+    }, []);
+
     return (
         <nav className="nav-bar page-width-large page-width-mobile">
             <div className="nav-bar__logo">
                 <Link to="/">
                     <PictureImg
-                        img={{
-                            src: "./images/logo.png",
-                            alt: "Logo",
-                            width: 30,
-                            height: 30,
-                        }}
-                        imgMobile={{
-                            src: "./images/logo.png",
-                            alt: "Logo",
-                            width: 30,
-                            height: 30,
-                        }}
-                        default_size="30/30"
-                        breakpoint_width="1024"
+                        img={logo}
                     />
                 </Link>
             </div>
@@ -47,7 +53,7 @@ const NavBar: React.FC = () => {
                     <Icon name="Menu" className="icon-open u-gold" onClick={toggleMenu} />
                 )}
 
-                <div className={`burger__menu ${isOpen ? "open u-flex" : "hidden"}`}>
+                <div className={`burger__menu ${isOpen ? "open" : ""}`}>
                     <div className="burger__menu__links u-none">
                         <Link
                             to="/about"

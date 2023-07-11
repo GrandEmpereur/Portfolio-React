@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PictureImg from "./PictureImg";
 import "../scss/sections/About.scss";
+import { getImagesByName, updateAxiosInstance } from "../services/axios.ts";
 
 const AboutMe: React.FC = () => {
+    const [cvImg, setCvImg] = useState({
+        src: '',
+        alt: 'cv',
+        width: 420,
+        height: 430,
+    });
+
+    const [cvImgMobile, setCvImgMobile] = useState({
+        src: '',
+        alt: 'cv',
+        width: 210,
+        height: 215,
+    });
+
+    useEffect(() => {
+        updateAxiosInstance();
+
+        getImagesByName('cv')
+            .then((res: unknown) => {
+                setCvImg({
+                    src: res as string,
+                    alt: 'cv',
+                    width: 420,
+                    height: 430,
+                });
+            })
+            .catch((err) => console.error(err));
+
+        getImagesByName('cv-mobile')
+            .then((res: unknown) => {
+                setCvImgMobile({
+                    src: res as string,
+                    alt: 'cv',
+                    width: 210,
+                    height: 215,
+                });
+            })
+            .catch((err) => console.error(err));
+    }, []);
+    
     return <section className="About react-component-hero page-width-large page-width-mobile u-flex flex-column v-gap-xl">
         <div className="About__title u-center u-flex flex-column v-gap-m">
             <h2 className="h1 u-gold keep-size">À propos de moi</h2>
@@ -11,21 +52,9 @@ const AboutMe: React.FC = () => {
 
         <div className="About__cv u-flex justify-content-around">
             <PictureImg
-                img={{
-                    src: "/images/cv.jpg",
-                    alt: "cv",
-                    width: 420,
-                    height: 430,
-                }}
-                imgMobile={{
-                    src: "/images/cv.jpg",
-                    alt: "cv",
-                    width: 320,
-                    height: 330,
-                }}
-                breakpoint_width="1024"
-                default_size="420/430"
-                lazy={false}
+                img={cvImg}
+                imgMobile={cvImgMobile}
+                lazy={true}
                 img_classes="About__cv--image u-rounded-border"
                 picture_classes="About__cv--picture u-flex"
             />

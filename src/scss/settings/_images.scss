@@ -1,8 +1,4 @@
 picture {
-    --image-aspect-ratio: unset;
-    height: 100%;
-    width: 100%;
-
     img {
         aspect-ratio: var(--image-aspect-ratio);
         width: 100%;

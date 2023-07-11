@@ -34,11 +34,9 @@ const Card: React.FC<CardProps> = ({
     className,
     pushBackgroundColor,
     default_size,
-    breakpoint_width,
-    is_swiper,
     lazy,
 }) => {
-    const imgAlt = title || (img ? img.alt : link?.split('/').pop() || '');
+    // const imgAlt = title || (img ? img.alt : link?.split('/').pop() || '');
     const HeadingTag = hn || "h2";
     const cardStyle = { 
         backgroundColor: pushBackgroundColor, 
@@ -59,12 +57,8 @@ const Card: React.FC<CardProps> = ({
                     <PictureImg
                         img={img}
                         imgMobile={imgMobile}
-                        alt={imgAlt}
                         picture_classes="card__image u-absolute u-absolute-all u-full-wh"
                         img_classes="u-full-wh"
-                        default_size={default_size}
-                        breakpoint_width={breakpoint_width}
-                        is_swiper={is_swiper}
                         lazy={lazy}
                     />
                 </div>

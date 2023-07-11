@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PictureImg from "./PictureImg";
 import "../scss/sections/Skills.scss";
 import Icon from "../common/Icon";
+import { getImagesByName, updateAxiosInstance } from "../services/axios.ts";
 
 interface AccordionProps {
     title: string;
@@ -38,6 +39,46 @@ interface SkillsData {
 
 const Skills: React.FC = () => {
     const [openIndexes, setOpenIndexes] = useState<{ [key: number]: boolean }>({});
+    const [skillsImg, setSkillsImg] = useState({
+        src: '',
+        alt: 'Image de présentation',
+        width: 420,
+        height: 430,
+    });
+
+    const [skillsImgMobile, setSkillsImgMobile] = useState({
+        src: '',
+        alt: 'Image de présentation',
+        width: 420,
+        height: 430,
+    });
+
+    useEffect(() => {
+        updateAxiosInstance();
+        
+        getImagesByName('skills')
+            .then((res: unknown) => {
+                setSkillsImg({
+                    src: res as string,
+                    alt: "Image de présentation",
+                    width: 420,
+                    height: 430,
+                });
+            })
+            .catch((err) => console.error(err));
+
+        getImagesByName('skills--mobile')
+            .then((res: unknown) => {
+                setSkillsImgMobile({
+                    src: res as string,
+                    alt: "Image de présentation",
+                    width: 210,
+                    height: 215,
+                });
+            })
+            .catch((err) => console.error(err));
+    }, []);
+
 
     const skillsData: SkillsData[] = [
         {
@@ -81,20 +122,8 @@ const Skills: React.FC = () => {
             <div className="skills-wrapper u-flex  h-gap-4xl align-items-center ">
                 <div className="skills-image u-flex">
                     <PictureImg
-                        img={{
-                            src: "./images/skills.jpg",
-                            alt: "Image de présentation",
-                            width: 30,
-                            height: 30,
-                        }}
-                        imgMobile={{
-                            src: "./images/skills.jpg",
-                            alt: "Image de présentation",
-                            width: 30,
-                            height: 30,
-                        }}
-                        default_size="420/430"
-                        breakpoint_width="1024"
+                        img={skillsImg}
+                        imgMobile={skillsImgMobile}
                         picture_classes="section-skills__image"
                         img_classes="u-rounded-border"
                     />
