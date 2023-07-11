@@ -37,8 +37,6 @@ const Preloader: React.FC<PreloaderProps> = ({ style, logo }) => {
                 <PictureImg
                     img={logo}
                     imgMobile={logo}
-                    alt="Logo"
-                    breakpoint_width="1024"
                     lazy={false}
                 />
             </div>
