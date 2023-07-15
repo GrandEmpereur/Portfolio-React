@@ -62,13 +62,13 @@ const NavBar: React.FC = () => {
                         >
                             À propos de moi
                         </Link>
-                        <Link
+                        {/* <Link
                             to="/projects"
                             className="u-gold"
                             onClick={toggleCloseMenu}
                         >
                             Projects
-                        </Link>
+                        </Link> */}
                         {/* <Link
                             to="/services"
                             className="u-gold"
@@ -89,10 +89,10 @@ const NavBar: React.FC = () => {
 
             <div className="u-none--md u-flex align-items-center justify-content-between">
                 <div className="nav-bar__center u-absolute">
-                    <Link to="/projects" className="nav-bar__projects u-gold u-flex flex-column align-items-center">
+                    {/* <Link to="/projects" className="nav-bar__projects u-gold u-flex flex-column align-items-center">
                         <Icon symbolId="icon-menu" className="custom-icon" />
                         <span className="u-underline--hover ">Projects</span>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className="nav-bar__links">
                     <Link to="/about" className="u-gold u-underline--hover ">À propos de moi</Link>

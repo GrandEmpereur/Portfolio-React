@@ -58,7 +58,7 @@ export async function getImagesByName(name: string): Promise<string | undefined>
     }
     
     try {
-        const response = await instance.get(`/api/upload/files?filters[name][$eq]=${name}`);
+        const response = await instance.get(`/api/upload/files?filters[name][$contains]=${name}`);
         console.log(response);
         if (response.status === 200 && response.data.length > 0) {
             const imageUrl = response.data[0].url;
