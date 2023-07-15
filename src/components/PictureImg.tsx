@@ -28,11 +28,11 @@ const PictureImg: React.FC<PictureImgProps> = ({
         <picture className={picture_classes || ''} style={pictureStyle}>
             <source 
                 srcSet={imgMobile.src}
-                media="(max-width: 768px)"
+                media="(max-width: 767.58px)"
             />
             <source
                 srcSet={img.src}
-                media="(min-width: 769px)"
+                media="(min-width: 768px)"
             />
             {lazy ? (
                 <LazyLoad>

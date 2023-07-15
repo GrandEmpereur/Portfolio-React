@@ -6,7 +6,7 @@ import NavBar from "../common/NavBar";
 import AboutPage from "./About";
 import Project from "./Project";
 import Contact from "../components/Contact.tsx";
-import PageTransition from "../common/PageTransition";
+// import PageTransition from "../common/PageTransition";
 import "../scss/templates/App.scss";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
@@ -19,14 +19,12 @@ const MainContent: React.FC = () => {
     return (
         <>
             <NavBar />
-            <PageTransition>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/projects" element={<Project />} />
-                    <Route path="/about" element={<AboutPage />} />
-                    <Route path="/contact" element={<Contact />} />
-                </Routes>
-            </PageTransition>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Project />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
         </>
     );
 };

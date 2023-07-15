@@ -3,63 +3,77 @@ import "../scss/templates/Home.scss";
 import Icon from "../common/Icon";
 import PictureImg from "../components/PictureImg";
 import { Link } from "react-router-dom";
-import { getImagesByName, updateAxiosInstance } from "../services/axios.ts";
+import { getPageByName, updateAxiosInstance } from "../services/axios.ts";
+import { PageContent, PagesResponse } from "../types/IPAges.types.ts";
 
 const Home: React.FC = () => {
+    const [pageContent, setPageContent] = useState<PageContent | null>(null);
 
     const [image, setImage] = useState({
         src: '',
         alt: 'Image de présentation',
         width: 420,
         height: 430,
-    }); // useState pour stocker les données d'image
+    });
     const [imageMobile, setImageMobile] = useState({
         src: '',
         alt: 'Image de présentation',
-        width: 420,
-        height: 430,
-    }); // useState pour stocker les données d'image pour mobile
+        width: 210,
+        height: 215,
+    });
 
     useEffect(() => {
         // Mise à jour de l'instance Axios
         updateAxiosInstance();
 
-        // Récupération de l'image pour desktop
-        getImagesByName('img_banner')
-            .then((res: unknown) => {
-                setImage({
-                    src: res as string,
-                    alt: "Image de présentation",
-                    width: 420,
-                    height: 430,
-                });
-            })
-            .catch((err) => console.error(err));
+        const fetchPages = async () => {
+            const home: any | undefined = await getPageByName("Home");
 
-        // Récupération de l'image pour mobile
-        getImagesByName('img_banner--mobile')
-            .then((res: unknown) => {
-                setImageMobile({
-                    src: res as string,
-                    alt: "Image de présentation",
-                    width: 420,
-                    height: 430,
-                });
-            })
-            .catch((err) => console.error(err));
+            console.log('home', home);
+            
+            if (home?.status === 'success' && home?.page) {
+                setPageContent(home.page);
+
+                const firstContentItem = home.page.Content[0];
+
+                if (firstContentItem.__component === 'blocks.image-text') {
+                    if (firstContentItem.Image && firstContentItem.Image.length > 0) {
+                        setImage({
+                            src: firstContentItem.Image[0].url,
+                            alt: firstContentItem.Image[0].alt,
+                            width: firstContentItem.Image[0].width,
+                            height: firstContentItem.Image[0].height,
+                        });
+                    }
+
+                    if (firstContentItem.ImageMobile && firstContentItem.ImageMobile.length > 0) {
+                        setImageMobile({
+                            src: firstContentItem.ImageMobile[0].url,
+                            alt: firstContentItem.ImageMobile[0].alt,
+                            width: firstContentItem.ImageMobile[0].width,
+                            height: firstContentItem.ImageMobile[0].height,
+                        });
+                    }
+                }
+            }
+        };
+        
+        fetchPages();
     }, []);
+
+    console.log('pageContent', pageContent);
 
     return (
         <div className="Home page-width-large page-width-mobile u-flex align-items-center justify-content-around u-full-width">
             <div className="Home__content u-flex flex-column v-gap-l">
-                <span className="Home__preTitle h4 u-gold">Portfolio</span>
+                <span className="Home__preTitle h4 u-gold">{pageContent?.Content[0]?.Title}</span>
 
                 <span className="Home__title h2">
-                    Hey ! Je m'appelle Patrick, je suis Developer Full Stack orienter Javascript
+                    {pageContent?.Content[0]?.Subtitle || ''}
                 </span>
 
                 <p className="Home__subtitle u-gray">
-                    Passionné par le monde médiéval, je crée des expériences web uniques en combinant mes compétences en développement full stack et en design. Découvrez comment je peux vous aider à transformer vos idées en réalités numériques.
+                    {pageContent?.Content[0]?.Description || ''}
                 </p>
 
                 <div className="Home__button u-flex h-gap-2xl u-pad-t-m">

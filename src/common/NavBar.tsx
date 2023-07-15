@@ -3,37 +3,50 @@ import { Link } from "react-router-dom";
 import PictureImg from "../components/PictureImg";
 import "../scss/sections/Navbar.scss";
 import Icon from "./Icon";
-import { getImagesByName, updateAxiosInstance } from "../services/axios.ts";
+import { updateAxiosInstance, getNavigation } from "../services/axios.ts";
+import { MenuItem } from "../types/INav.types.ts";
+
+interface LogoImg {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+}
 
 const NavBar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [logo, setLogo] = useState({
+    const [logo, setLogo] = useState<LogoImg>({
         src: '',
         alt: 'Logo',
         width: 30,
         height: 30,
     });
+    const [nav, setNavItems] = useState<MenuItem[] | undefined>();
+
 
     const toggleMenu = () => {
-        console.log("toggleMenu");
         setIsOpen(!isOpen);
     };
 
     const toggleCloseMenu = () => {
-        console.log("toggleCloseMenu");
         setIsOpen(false);
     };
 
     useEffect(() => {
         updateAxiosInstance();
-        const fetchImages = async () => {
-            const logoImage = await getImagesByName('logo');
-            setLogo(prevState => ({
-                ...prevState,
-                src: logoImage || prevState.src,
-            }));
+        const fetchNavigation = async () => {
+            const nav = await getNavigation();
+            if (nav?.status === "success") {
+                setLogo({
+                    src: nav.logo.url,
+                    alt: 'Logo',
+                    width: 30,
+                    height: 30,
+                });
+                setNavItems(nav.nav);
+            }
         };
-        fetchImages()
+        fetchNavigation()
     }, []);
 
     return (
@@ -55,49 +68,32 @@ const NavBar: React.FC = () => {
 
                 <div className={`burger__menu ${isOpen ? "open" : ""}`}>
                     <div className="burger__menu__links u-none">
-                        <Link
-                            to="/about"
-                            className="u-gold u-underline--hover "
-                            onClick={toggleCloseMenu}
-                        >
-                            À propos de moi
-                        </Link>
-                        {/* <Link
-                            to="/projects"
-                            className="u-gold"
-                            onClick={toggleCloseMenu}
-                        >
-                            Projects
-                        </Link> */}
-                        {/* <Link
-                            to="/services"
-                            className="u-gold"
-                            onClick={toggleCloseMenu}
-                        >
-                            Services
-                        </Link> */}
-                        <Link
-                            to="/contact"
-                            className="u-gold"
-                            onClick={toggleCloseMenu}
-                        >
-                            Contact
-                        </Link>
+                        {nav && nav.map((item: MenuItem) => (
+                            <Link
+                                key={item.id}
+                                to={item.Slug}
+                                className="u-gold u-underline--hover "
+                                onClick={toggleCloseMenu}
+                            >
+                                {item.Label}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
 
             <div className="u-none--md u-flex align-items-center justify-content-between">
-                <div className="nav-bar__center u-absolute">
-                    {/* <Link to="/projects" className="nav-bar__projects u-gold u-flex flex-column align-items-center">
-                        <Icon symbolId="icon-menu" className="custom-icon" />
-                        <span className="u-underline--hover ">Projects</span>
-                    </Link> */}
-                </div>
                 <div className="nav-bar__links">
-                    <Link to="/about" className="u-gold u-underline--hover ">À propos de moi</Link>
-                    {/* <Link to="/services" className="u-gold u-underline--hover ">Services</Link> */}
-                    <Link to="/contact" className="u-gold u-underline--hover ">Contact</Link>
+                    {nav && nav.map((item: MenuItem) => (
+                        <Link
+                            key={item.id}
+                            to={item.Slug}
+                            className="u-gold u-underline--hover "
+                            onClick={toggleCloseMenu}
+                        >
+                            {item.Label}
+                        </Link>
+                    ))}
                 </div>
             </div>
         </nav>
